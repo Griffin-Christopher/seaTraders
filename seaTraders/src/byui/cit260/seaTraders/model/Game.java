@@ -16,8 +16,8 @@ public class Game implements Serializable {
   
   // Variables
   private int stage;
-  private int flags[];
-  private double playerScore[];
+  private int[] flags;
+  private double[] playerScore;
   
   // Constructor
   public Game() {
@@ -45,7 +45,7 @@ public class Game implements Serializable {
     this.playerScore = playerScore;
   }
   
-  // MISCELLANEOUS
+  // OVERRIDES
   @Override
   public int hashCode() {
     int hash = 5;
