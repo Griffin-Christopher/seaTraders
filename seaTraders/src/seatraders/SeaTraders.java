@@ -16,6 +16,7 @@ import byui.cit260.seaTraders.model.Quest;
 import byui.cit260.seaTraders.model.Ship;
 import byui.cit260.seaTraders.model.Stage;
 import byui.cit260.seaTraders.model.World;
+import byui.cit260.seaTraders.view.StartProgramView;
 
 /**
  *
@@ -23,11 +24,34 @@ import byui.cit260.seaTraders.model.World;
  */
 public class SeaTraders {
 
-  /**
-   * @param args the command line arguments
-   */
+  // Variables
+  private static Game currentGame = null;
+  private static Player player = null;
+  
+  // Getters
+  public static Game getCurrentGame() {
+    return currentGame;
+  } 
+  public static Player getPlayer() {
+    return player;
+  }
+
+  // Setters
+  public static void setCurrentGame(Game currentGame) {
+    SeaTraders.currentGame = currentGame;
+  }
+  public static void setPlayer(Player player) {
+    SeaTraders.player = player;
+  }
+
   public static void main(String[] args) {
+    // Initialize game
+    StartProgramView startProgramView = new StartProgramView();
+    startProgramView.displayStartProgramView();
     
+    
+    
+    /* VARIABLE TESTING
     // Initialize Objects
     CrewMember crew = new CrewMember();
     Encounter encounter = new Encounter();
@@ -132,5 +156,6 @@ public class SeaTraders {
     
     String worldInfo = world.toString();
     System.out.println(worldInfo);
+    END VARIABLE TESTING */
   } 
 }
