@@ -5,6 +5,7 @@
  */
 package byui.cit260.seaTraders.control;
 
+import byui.cit260.seaTraders.model.Game;
 import byui.cit260.seaTraders.model.Player;
 import seatraders.SeaTraders;
 
@@ -29,7 +30,13 @@ public class GameControl {
     return player;
   }
 
-  public static void createNewGame(Player player) {
-    System.out.println("\n*** createNewGame() function called ***");
+  public static Game createNewGame() {
+    // Create New Game
+    Game game = new Game();
+    
+    // Save Game
+    SeaTraders.setCurrentGame(game); 
+    
+    return game;
   }  
 }

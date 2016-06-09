@@ -24,9 +24,13 @@ import byui.cit260.seaTraders.view.StartProgramView;
  */
 public class SeaTraders {
 
-  // Variables
+  // Objects
   private static Game currentGame = null;
   private static Player player = null;
+  
+  // Variables
+  private static String difficulty = "Normal";
+  private static String rate = "Normal rate";
   
   // Getters
   public static Game getCurrentGame() {
@@ -34,6 +38,12 @@ public class SeaTraders {
   } 
   public static Player getPlayer() {
     return player;
+  }
+  public static String getDifficulty() {
+    return difficulty;
+  }
+  public static String getRate() {
+    return rate;
   }
 
   // Setters
@@ -43,16 +53,21 @@ public class SeaTraders {
   public static void setPlayer(Player player) {
     SeaTraders.player = player;
   }
+  public static void setDifficulty(String difficulty) {
+    SeaTraders.difficulty = difficulty;
+  }
+  public static void setRate(String rate) {
+    SeaTraders.rate = rate;
+  }
 
   public static void main(String[] args) {
     // Initialize game
     StartProgramView startProgramView = new StartProgramView();
     startProgramView.displayStartProgramView();
     
-    
-    
-    /* VARIABLE TESTING
     // Initialize Objects
+    
+    /* VARIABLE TESTING 
     CrewMember crew = new CrewMember();
     Encounter encounter = new Encounter();
     Game game = new Game();

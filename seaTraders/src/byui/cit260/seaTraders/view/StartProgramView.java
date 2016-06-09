@@ -60,7 +60,7 @@ public class StartProgramView {
     
     // Fetch user name
     while (!valid) { // Require valid entry
-      System.out.println("\n" + this.promptMessage);
+      System.out.println(this.promptMessage);
       
       value = keyboard.nextLine(); // Get next typed line
       value = value.trim();        // Remove leading/trailing blanks

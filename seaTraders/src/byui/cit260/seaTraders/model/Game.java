@@ -27,11 +27,11 @@ public class Game implements Serializable {
   public int getStage() {
     return stage;
   }
-  public int[] getFlags() {
-    return flags;
+  public int getFlags(int index) {
+    return flags[index];
   }
-  public double[] getPlayerScore() {
-    return playerScore;
+  public double getPlayerScore(int index) {
+    return playerScore[index];
   }
   
   // Setters
@@ -41,8 +41,14 @@ public class Game implements Serializable {
   public void setFlags(int[] flags) {
     this.flags = flags;
   }
+  public void setFlags(int index, int flag) {
+    this.flags[index] = flag;
+  }
   public void setPlayerScore(double[] playerScore) {
     this.playerScore = playerScore;
+  }
+  public void setPlayerScore(int index, double score) {
+    this.playerScore[index] = score;
   }
   
   // OVERRIDES

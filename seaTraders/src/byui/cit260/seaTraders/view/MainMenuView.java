@@ -7,7 +7,6 @@ package byui.cit260.seaTraders.view;
 
 import byui.cit260.seaTraders.control.GameControl;
 import java.util.Scanner;
-import seatraders.SeaTraders;
 
 /**
  *
@@ -20,8 +19,7 @@ public class MainMenuView {
 
   // Default Constructor
   public MainMenuView() {
-    this.menu = "\n"
-              + "\n----------------------------------------"
+    this.menu = "\n----------------------------------------"
               + "\n| Main Menu                            |"
               + "\n----------------------------------------"
               + "\nN - New Game"
@@ -48,12 +46,12 @@ public class MainMenuView {
 
   private String getMenuOption() {
     Scanner keyboard = new Scanner(System.in); // Get infile for keyboard
-    String value = ""; // Returned value
-    boolean valid = false; // Begin invalid
+    String value = null;                       // Returned value
+    boolean valid = false;                     // Begin invalid
     
     // Fetch user choice
     while (!valid) { // Require valid entry
-      System.out.println("\n" + this.menu + "\nPlease choose a menu option: ");
+      System.out.println(this.menu + "\nPlease choose a menu option: ");
       
       value = keyboard.nextLine(); // Get next typed line
       value = value.trim();        // Remove leading/trailing blanks
@@ -85,7 +83,7 @@ public class MainMenuView {
         this.saveGame();
         break;
       case "T":
-        this.displaySettings();
+        this.displayGameSettings();
         break;
       case "H":
         this.displayHelpMenu();
@@ -95,17 +93,16 @@ public class MainMenuView {
         break;
       default:
         System.out.println("\n*** Invalid selection *** Try again.");
-        //break;
     }
     
     return false;
   }
 
   private void newGame() {
-    // Create new game
-    GameControl.createNewGame(SeaTraders.getPlayer());
+    // Create New Game
+    GameControl.createNewGame();
     
-    // Display game menu
+    // Display Game Menu
     GameMenuView gameMenu = new GameMenuView();
     gameMenu.displayGameMenu();
   }
@@ -118,12 +115,14 @@ public class MainMenuView {
     System.out.println("\n*** saveGame() function called ***");
   }
 
-  private void displaySettings() {
-    System.out.println("\n*** displaySettings() function called ***");
+  private void displayGameSettings() {
+    // Display Game Settings
+    GameSettingsView gameSettings = new GameSettingsView();
+    gameSettings.displayGameSettings();
   }
 
   private void displayHelpMenu() {
-    // Display help menu
+    // Display Help Menu
     HelpMenuView helpMenu = new HelpMenuView();
     helpMenu.displayHelpMenu();
   }
