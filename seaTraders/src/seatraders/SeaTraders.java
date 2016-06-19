@@ -22,11 +22,13 @@ import byui.cit260.seaTraders.view.StartProgramView;
  *
  * @author Christopher
  */
-public class SeaTraders {
-
+public class SeaTraders { 
   // Objects
   private static Game currentGame = null;
   private static Player player = null;
+  private static Ship ship = new Ship();
+  private static NPC npcOne = new NPC(1.25, 10);
+  private static NPC npcTwo = new NPC(1.33);
   
   // Variables
   private static String difficulty = "Normal";
@@ -38,6 +40,15 @@ public class SeaTraders {
   } 
   public static Player getPlayer() {
     return player;
+  }
+  public static Ship getShip() {
+    return ship;
+  }
+  public static NPC getNPCOne() {
+    return npcOne;
+  }
+  public static NPC getNPCTwo() {
+    return npcTwo;
   }
   public static String getDifficulty() {
     return difficulty;
@@ -63,7 +74,7 @@ public class SeaTraders {
   public static void main(String[] args) {
     // Initialize game
     StartProgramView startProgramView = new StartProgramView();
-    startProgramView.displayStartProgramView();
+    startProgramView.display();
     
     // Initialize Objects
     

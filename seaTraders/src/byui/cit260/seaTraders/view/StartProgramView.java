@@ -13,13 +13,11 @@ import java.util.Scanner;
  *
  * @author Christopher Griffin
  */
-public class StartProgramView {
-  
-  private String promptMessage;
-  
+public class StartProgramView extends View{
   // Default Constructor
   public StartProgramView() {
-    this.promptMessage = "\nPlease enter your name: ";
+    super("\nPlease enter your name: ");
+    
     // Display welcome banner
     this.displayBanner();
   }
@@ -39,44 +37,9 @@ public class StartProgramView {
       + "\n* in the region.                                             *"
       + "\n**************************************************************");
   }
-
-  public void displayStartProgramView() {
-    boolean done = false; // Start unfinished
-    do {
-      // Prompt for user name
-      String playersName = this.getPlayersName();
-      if (playersName.toUpperCase().equals("Q")) // User is quitting
-        return; // Exit game
-      
-      // Else continue
-      done = this.doAction(playersName);
-    } while (!done);
-  }
-
-  private String getPlayersName() {
-    Scanner keyboard = new Scanner(System.in); // Get infile for keyboard
-    String value = "";                         // Returned value
-    boolean valid = false;                     // Begin invalid
-    
-    // Fetch user name
-    while (!valid) { // Require valid entry
-      System.out.println(this.promptMessage);
-      
-      value = keyboard.nextLine(); // Get next typed line
-      value = value.trim();        // Remove leading/trailing blanks
-      
-       if (value.length() < 1) {   // Empty value
-         System.out.println("\nInvalid value: value can not be blank.");
-         continue;
-       }
-       
-       break; // End loop after valid entry
-    }
-    
-    return value; // Return valid entry
-  }
   
-  private boolean doAction(String playersName) {
+  @Override
+  public boolean doAction(String playersName) {
     // Check for 2+ characters
     if (playersName.length() < 2) {
       System.out.println("\nInvalid players name: "
@@ -111,6 +74,6 @@ public class StartProgramView {
     MainMenuView mainMenuView = new MainMenuView();
     
     // Display the Main Menu
-    mainMenuView.displayMainMenuView();
+    mainMenuView.display();
   }
 }

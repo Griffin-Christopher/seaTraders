@@ -9,24 +9,18 @@ import java.util.Scanner;
 
 /**
  *
- * @author Christopher Griffin
+ * @author Christopher
  */
-public class HelpMenuView extends View{
-  // Default Constructor
-  public HelpMenuView() {
-    super("\n========================================"
-        + "\n This menu will eventually describe how "
-        + "\n to tackle the initial game mechanics   "
-        + "\n leading up to the first game tutorial. "
-        + "\n From that point on, those tutorials    "
-        + "\n will steadily fill in the blanks.      "
-        + "\n                                        "
-        + "\n This menu will also contain hotkey     "
-        + "\n reminders for thinks like pressing 'O' "
-        + "\n to return to the Main Menu from within "
-        + "\n an active game.                        "
-        + "\n========================================"
-        + "\nPress 'R' to return to the main menu");
+public abstract class View implements ViewInterface {
+  
+  // Variables
+  protected String displayMessage;
+  
+  // Constructors
+  public View() {
+  }
+  public View(String message) {
+    this.displayMessage = message;
   }
   
   @Override
@@ -35,8 +29,8 @@ public class HelpMenuView extends View{
     do {
       // Prompt for menu option
       String value = this.getInput();
-      if (value.toUpperCase().equals("R")) // User is quitting
-        return; // Return to Main Menu
+      if (value.toUpperCase().equals("Q")) // User is quitting
+        return; // Exit game
       
       // Else continue
       done = this.doAction(value);
@@ -46,7 +40,7 @@ public class HelpMenuView extends View{
   @Override
   public String getInput() {
     Scanner keyboard = new Scanner(System.in); // Get infile for keyboard
-    String value = "";                         // Returned value
+    String value = null;                       // Returned value
     boolean valid = false;                     // Begin invalid
     
     // Fetch user choice
@@ -58,18 +52,12 @@ public class HelpMenuView extends View{
       
       if (value.length() < 1) {    // Empty value
         System.out.println("\nInvalid value: value can not be blank.");
-        valid = true;
+        continue;
       }
-      
+       
       break; // End loop after valid entry
     }
     
     return value; // Return valid entry
-  }
-  
-  @Override
-  public boolean doAction(String value) {
-    // EMPTY FOR NOW
-    return false;
   }
 }

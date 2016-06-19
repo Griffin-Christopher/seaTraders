@@ -19,13 +19,20 @@ public class Player implements Serializable {
   private String name;
   private int[] location;
   private int[] stats;
+  private double agility = 0;
+  private int attack;
   private double[] resources;
   private int fame;
   private int rank;
   private String[] journal;
   
-  // Constructor
+  // Constructors
   public Player() {
+    agility = 1.5;
+    attack = -1;
+  }
+  public Player(int attack) {
+    this.attack = attack;
   }
 
   // Getters
@@ -37,6 +44,12 @@ public class Player implements Serializable {
   }
   public int[] getStats() {
     return stats;
+  }
+  public double getAgility() {
+    return agility;
+  }
+  public int getAttack() {
+    return attack;
   }
   public double[] getResources() {
     return resources;
@@ -60,6 +73,12 @@ public class Player implements Serializable {
   }
   public void setStats(int[] stats) {
     this.stats = stats;
+  }
+  public void setAgility(int agility) {
+    this.agility = agility;
+  }
+  public void setAttack(int attack) {
+    this.attack = attack;
   }
   public void setResources(double[] resources) {
     this.resources = resources;

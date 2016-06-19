@@ -18,11 +18,16 @@ public class Ship implements Serializable {
   // Variables
   private String description;
   private int[] stats;
+  private int cannons;
   private String type;
   private double[] equipment;
   
-  // Constructor
+  // Constructors
   public Ship() {
+    cannons = 4;
+  }
+  public Ship(int cannons) {
+    this.cannons = cannons;
   }
 
   // Getters
@@ -31,6 +36,9 @@ public class Ship implements Serializable {
   }
   public int[] getStats() {
     return stats;
+  }
+  public int getCannons() {
+    return cannons;
   }
   public String getType() {
     return type;
@@ -45,6 +53,9 @@ public class Ship implements Serializable {
   }
   public void setStats(int[] stats) {
     this.stats = stats;
+  }
+  public int setCannons() {
+    return cannons;
   }
   public void setType(String type) {
     this.type = type;

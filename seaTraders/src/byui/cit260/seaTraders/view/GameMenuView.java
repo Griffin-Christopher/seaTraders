@@ -11,72 +11,47 @@ import java.util.Scanner;
  *
  * @author Christopher Griffin
  */
-public class GameMenuView {
-  
-  // Variables
-  private String menu;
-  
+public class GameMenuView extends View {  
   // Default Constructor
   public GameMenuView() {
-    this.menu = "\n----------------------------------------"
-              + "\n| STATUS                               |"
-              + "\n----------------------------------------"
-              + "\nC – Cargo Manifest"
-              + "\nJ – Journal"
-              + "\nQ – Quest Log"
-              + "\nR – Resources"
-              + "\nD – Ship Details"
-              + "\nM - Return to Main Menu"
-              + "\n----------------------------------------"
-              + "\n| SHIPYARD                             |"
-              + "\n----------------------------------------"
-              + "\nT – Travel"
-              + "\nP – Repair Ship"
-              + "\nB – Buy/Sell Ship Fittings"
-              + "\nU – Upgrade Ship"
-              + "\nS – Shore Leave"
-              + "\n? - Help";
+    super("\n----------------------------------------"
+        + "\n| STATUS                               |"
+        + "\n----------------------------------------"
+        + "\nC – Cargo Manifest"
+        + "\nJ – Journal"
+        + "\nQ – Quest Log"
+        + "\nR – Resources"
+        + "\nD – Ship Details"
+        + "\nM - Return to Main Menu"
+        + "\n----------------------------------------"
+        + "\n| SHIPYARD                             |"
+        + "\n----------------------------------------"
+        + "\nT – Travel"
+        + "\nP – Repair Ship"
+        + "\nB – Buy/Sell Ship Fittings"
+        + "\nU – Upgrade Ship"
+        + "\nS – Shore Leave"
+        + "\n? - Help"
+        + "\n----------------------------------------"
+        + "\nWhat would you like to do?");
   }
 
-  void displayGameMenu() {
+  @Override
+  public void display() {
     boolean done = false; // Start unfinished
     do {
       // Prompt for menu option
-      String menuOption = this.getMenuOption();
-      if (menuOption.toUpperCase().equals("M")) // User is quitting
+      String value = this.getInput();
+      if (value.toUpperCase().equals("M")) // User is quitting
         return; // Return to Main Menu
       
       // Else continue
-      done = this.doAction(menuOption);
+      done = this.doAction(value);
     } while (!done);
-  } 
-  
-  private String getMenuOption() {
-    Scanner keyboard = new Scanner(System.in); // Get infile for keyboard
-    String value = null;                       // Returned value
-    boolean valid = false;                     // Begin invalid
-    
-    // Fetch user choice
-    while (!valid) { // Require valid entry
-      System.out.println(this.menu 
-              + "\n----------------------------------------"
-              + "\nWhat would you like to do?");
-      
-      value = keyboard.nextLine(); // Get next typed line
-      value = value.trim();        // Remove leading/trailing blanks
-      
-       if (value.length() < 1) {   // Empty value
-         System.out.println("\nInvalid value: value can not be blank.");
-         continue;
-       }
-       
-       break; // End loop after valid entry
-    }
-    
-    return value; // Return valid entry
   }
-  
-   private boolean doAction(String choice) {
+
+  @Override
+  public boolean doAction(String choice) {
     // Convert to upper case
     choice = choice.toUpperCase();
     

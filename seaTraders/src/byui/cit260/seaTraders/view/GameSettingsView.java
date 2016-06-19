@@ -12,7 +12,7 @@ import seatraders.SeaTraders;
  *
  * @author Christopher Griffin
  */
-public class GameSettingsView {
+public class GameSettingsView extends View {
   
   // Variables
   private String difficultyText;
@@ -34,7 +34,8 @@ public class GameSettingsView {
           + "\n400% – Four times as likely";
   }
   
-  void displayGameSettings() {
+  @Override
+  public void display() {
     boolean done = false; // Start unfinished
     do {
       // Prompt for input
@@ -54,7 +55,8 @@ public class GameSettingsView {
     } while (!done);
   }
 
-  private String getInput() {
+  @Override
+  public String getInput() {
     Scanner keyboard = new Scanner(System.in); // Get infile for keyboard
     String value = null;                       // Returned value
     boolean valid = false;                     // Begin invalid
@@ -124,6 +126,7 @@ public class GameSettingsView {
           break;
         default:
           System.out.println("\n*** Invalid selection *** Try again.");
+          continue;
       }   
       
       // Store New Difficulty
@@ -164,7 +167,7 @@ public class GameSettingsView {
           System.out.println("\n*** Invalid selection *** Try again.");
       }   
       
-      // Store New Difficulty
+      // Store New Encounter Rate
       if (setting != null) {
         SeaTraders.setRate(setting);
         break; // End loop after valid entry
@@ -172,5 +175,11 @@ public class GameSettingsView {
     }
     
     return false;  // Loop endlessly until player returns to Main Menu
+  }
+
+  @Override
+  public boolean doAction(String value) {
+    // EMPTY FOR NOW
+    return false;
   }
 }

@@ -18,11 +18,21 @@ public class NPC implements Serializable {
   // Variables
   private String description;
   private int[] stats;
+  private double agility = 0;
+  private int armor;
   private String type;
   private double[] loot;
   
-  // Constructor
-  public NPC() {
+  // Constructors
+  public NPC(double agility) {
+    this.agility = agility;
+  }
+  public NPC(double agility, int armor) {
+    this.agility = agility;
+    this.armor = armor;
+  }
+  public NPC(int armor) {
+    this.armor = armor;
   }
 
   // Getters
@@ -31,6 +41,12 @@ public class NPC implements Serializable {
   }
   public int[] getStats() {
     return stats;
+  }
+  public double getAgility() {
+    return agility;
+  }
+  public int getArmor() {
+    return armor;
   }
   public String getType() {
     return type;
@@ -45,6 +61,10 @@ public class NPC implements Serializable {
   }
   public void setStats(int[] stats) {
     this.stats = stats;
+  }
+  
+  public int setArmor() {
+    return armor;
   }
   public void setType(String type) {
     this.type = type;

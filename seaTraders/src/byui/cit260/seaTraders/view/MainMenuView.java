@@ -5,69 +5,35 @@
  */
 package byui.cit260.seaTraders.view;
 
+import byui.cit260.seaTraders.control.CombatControl;
 import byui.cit260.seaTraders.control.GameControl;
 import java.util.Scanner;
+import seatraders.SeaTraders;
 
 /**
  *
  * @author Christopher Griffin
  */
-public class MainMenuView {
-  
-  // Variables
-  private String menu;
-
+public class MainMenuView extends View {
   // Default Constructor
   public MainMenuView() {
-    this.menu = "\n----------------------------------------"
-              + "\n| Main Menu                            |"
-              + "\n----------------------------------------"
-              + "\nN - New Game"
-              + "\nL - Load Game"
-              + "\nS - Save Game"
-              + "\nT - Game Settings"
-              + "\nH - How To Play"
-              + "\nQ - Quit Game"
-              + "\n----------------------------------------";
+    super("\n----------------------------------------"
+        + "\n| Main Menu                            |"
+        + "\n----------------------------------------"
+        + "\nN - New Game"
+        + "\nL - Load Game"
+        + "\nS - Save Game"
+        + "\nT - Game Settings"
+        + "\nH - How To Play"
+        + "\nQ - Quit Game"
+        + "\nC - Combat Test"
+        + "\nD - Damage Test"
+        + "\nM - Movement Test"    
+        + "\n----------------------------------------");
   }
 
-  public void displayMainMenuView() {
-    boolean done = false; // Start unfinished
-    do {
-      // Prompt for menu option
-      String menuOption = this.getMenuOption();
-      if (menuOption.toUpperCase().equals("Q")) // User is quitting
-        return; // Exit game
-      
-      // Else continue
-      done = this.doAction(menuOption);
-    } while (!done);
-  }
-
-  private String getMenuOption() {
-    Scanner keyboard = new Scanner(System.in); // Get infile for keyboard
-    String value = null;                       // Returned value
-    boolean valid = false;                     // Begin invalid
-    
-    // Fetch user choice
-    while (!valid) { // Require valid entry
-      System.out.println(this.menu + "\nPlease choose a menu option: ");
-      
-      value = keyboard.nextLine(); // Get next typed line
-      value = value.trim();        // Remove leading/trailing blanks
-      
-       if (value.length() < 1) {   // Empty value
-         System.out.println("\nInvalid value: value can not be blank.");
-         continue;
-       }
-       
-       break; // End loop after valid entry
-    }
-    
-    return value; // Return valid entry
-  }
-
-  private boolean doAction(String choice) {
+  @Override
+  public boolean doAction(String choice) {
     // Convert to upper case
     choice = choice.toUpperCase();
     
@@ -91,6 +57,15 @@ public class MainMenuView {
       case "Q":
         this.quitGame();
         break;
+      case "C":
+        this.combatTest();
+        break;
+      case "D":
+        this.damageTest();
+        break;
+      case "M":
+        this.movementTest();
+        break;
       default:
         System.out.println("\n*** Invalid selection *** Try again.");
     }
@@ -104,7 +79,7 @@ public class MainMenuView {
     
     // Display Game Menu
     GameMenuView gameMenu = new GameMenuView();
-    gameMenu.displayGameMenu();
+    gameMenu.display();
   }
 
   private void loadGame() {
@@ -118,16 +93,44 @@ public class MainMenuView {
   private void displayGameSettings() {
     // Display Game Settings
     GameSettingsView gameSettings = new GameSettingsView();
-    gameSettings.displayGameSettings();
+    gameSettings.display();
   }
 
   private void displayHelpMenu() {
     // Display Help Menu
     HelpMenuView helpMenu = new HelpMenuView();
-    helpMenu.displayHelpMenu();
+    helpMenu.display();
+            
   }
 
   private void quitGame() {
     System.out.println("\n*** quitGame() function called ***");
+  }
+
+  private void combatTest() {
+    // Simulate 1v1
+    CombatControl combatTestOne = new CombatControl(SeaTraders.getNPCOne());
+    combatTestOne.advanceCombat();
+    
+    // Simulate 1v2
+    CombatControl combatTestTwo = new CombatControl(SeaTraders.getNPCOne(), 
+            SeaTraders.getNPCTwo());
+    combatTestTwo.advanceCombat();
+  }
+
+  private void damageTest() {
+    // Pass Participants
+    CombatControl damageTest = new CombatControl(SeaTraders.getNPCOne());
+    
+    // Simulate Attack
+    double damage = damageTest.calcDamage(SeaTraders.getPlayer(), 
+            SeaTraders.getNPCOne(), SeaTraders.getShip());
+    System.out.println("\nPlayer deals " + damage + " damage to the Pirate Ship!");
+  }
+  
+  private void movementTest() {
+    // Display Help Menu
+    MovementView movementTest = new MovementView();
+    movementTest.display();
   }
 }
