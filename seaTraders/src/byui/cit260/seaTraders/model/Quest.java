@@ -5,8 +5,8 @@
  */
 package byui.cit260.seaTraders.model;
 
+import java.awt.Point;
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
@@ -14,117 +14,102 @@ import java.util.Objects;
  */
 public class Quest implements Serializable {
   
-  // Variables
-  private boolean active;
-  private boolean completed;
-  private boolean unlocked;
-  private String description;
-  private String reward;
+  // Detail Variables
   private String type;
-  private String objective;
+  private String description;
+  private int[] resourceReward;
+  private Item[] itemReward;
   
-  // Constructor
-  public Quest() {
+  // Tracking Variables
+  private Point origin;
+  private Point destination;
+  private boolean[] objectives;
+  private boolean isActive;
+  private boolean isCompleted;
+  private boolean isUnlocked;
+  
+  // Constructors
+  public Quest(String type, String description) {
+    setType(type);
+    setDescription(description);
+    
+    // OTHER QUEST INITIALIZATION DETAILS
+  }
+  public Quest(String type, String description, Point origin, Point destination) {
+    setType(type);
+    setDescription(description);
+    setOrigin(origin);
+    setDestination(destination);
+    
+    // OTHER QUEST INITIALIZATION DETAILS
   }
 
   // Getters
-  public boolean isActive() {
-    return active;
-  }
-  public boolean isCompleted() {
-    return completed;
-  }
-  public boolean isUnlocked() {
-    return unlocked;
+  public String getType() {
+    return type;
   }
   public String getDescription() {
     return description;
   }
-  public String getReward() {
-    return reward;
+  public int[] getResourceReward() {
+    return resourceReward;
   }
-  public String getType() {
-    return type;
+  public Item[] getItemReward() {
+    return itemReward;
   }
-  public String getObjective() {
-    return objective;
+  public Point getOrigin() {
+    return origin;
+  }
+  public Point getDestination() {
+    return destination;
+  }
+  public boolean[] getObjectives() {
+    return objectives;
+  }
+  
+  // Quest Flags
+  public boolean isActive() {
+    return isActive;
+  }
+  public boolean isCompleted() {
+    return isCompleted;
+  }
+  public boolean isUnlocked() {
+    return isUnlocked;
   }
 
+  
   // Setters
-  public void setActive(boolean active) {
-    this.active = active;
-  }
-  public void setCompleted(boolean completed) {
-    this.completed = completed;
-  }
-  public void setUnlocked(boolean unlocked) {
-    this.unlocked = unlocked;
+  public void setType(String type) {
+    this.type = type;
   }
   public void setDescription(String description) {
     this.description = description;
   }
-  public void setReward(String reward) {
-    this.reward = reward;
+  public void setResourceReward(int[] resourceReward) {
+    this.resourceReward = resourceReward;
   }
-  public void setType(String type) {
-    this.type = type;
+  public void setItemReward(Item[] itemReward) {
+    this.itemReward = itemReward;
   }
-  public void setObjective(String objective) {
-    this.objective = objective;
+  public void setOrigin(Point origin) {
+    this.origin = origin;
+  }
+  public void setDestination(Point destination) {
+    this.destination = destination;
+  }
+  public void setObjectives(boolean[] objectives) {
+    this.objectives = objectives;
   }
   
-  // OVERRIDES
-  @Override
-  public int hashCode() {
-    int hash = 5;
-    hash = 37 * hash + (this.active ? 1 : 0);
-    hash = 37 * hash + (this.completed ? 1 : 0);
-    hash = 37 * hash + (this.unlocked ? 1 : 0);
-    hash = 37 * hash + Objects.hashCode(this.description);
-    hash = 37 * hash + Objects.hashCode(this.reward);
-    hash = 37 * hash + Objects.hashCode(this.type);
-    hash = 37 * hash + Objects.hashCode(this.objective);
-    return hash;
+  // Toggles
+  public void activateQuest() {
+    this.isActive = true;
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    final Quest other = (Quest) obj;
-    if (this.active != other.active) {
-      return false;
-    }
-    if (this.completed != other.completed) {
-      return false;
-    }
-    if (this.unlocked != other.unlocked) {
-      return false;
-    }
-    if (!Objects.equals(this.description, other.description)) {
-      return false;
-    }
-    if (!Objects.equals(this.reward, other.reward)) {
-      return false;
-    }
-    if (!Objects.equals(this.type, other.type)) {
-      return false;
-    }
-    if (!Objects.equals(this.objective, other.objective)) {
-      return false;
-    }
-    return true;
+  public void completeQuest() {
+    this.isCompleted = true;
   }
-
-  @Override
-  public String toString() {
-    return "Quest{" + "active=" + active + ", completed=" + completed + ", unlocked=" + unlocked + ", description=" + description + ", reward=" + reward + ", type=" + type + ", objective=" + objective + '}';
+  public void unlockQuest() {
+    this.isUnlocked = true;
   }
 }

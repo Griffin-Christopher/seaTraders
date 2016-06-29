@@ -15,6 +15,8 @@ import java.util.Arrays;
 public class Game implements Serializable {
   
   // Variables
+  public static double gameDifficulty = 1.00;
+  public static double pirateRate = 1.00;
   private int stage;
   private int[] flags;
   private double[] playerScore;

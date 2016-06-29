@@ -7,7 +7,6 @@ package byui.cit260.seaTraders.view;
 
 import byui.cit260.seaTraders.control.GameControl;
 import byui.cit260.seaTraders.model.Player;
-import java.util.Scanner;
 
 /**
  *

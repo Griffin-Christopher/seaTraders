@@ -6,8 +6,6 @@
 package byui.cit260.seaTraders.model;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Objects;
 
 /**
  *
@@ -16,94 +14,113 @@ import java.util.Objects;
 public class Ship implements Serializable {
   
   // Variables
-  private String description;
-  private int[] stats;
-  private int cannons;
+  private String name;
   private String type;
-  private double[] equipment;
+  private String description;
+  private double agility;
+  private double armor;
+  private double attack;
+  private int cannons;
+  private double speed;
+  private double health;
+  private int cargohold;
+  private double value;
   
-  // Constructors
+  private Item[] fittings;
+  
+  // Constructor
   public Ship() {
-    cannons = 4;
   }
-  public Ship(int cannons) {
-    this.cannons = cannons;
+  
+  public Ship(String name, String type, String description, double agility,
+          double armor, double attack, int cannons, double speed, double health, 
+          int cargohold, double value) {
+    setName(name);
+    setType(type);
+    setDescription(description);
+    setAgility(agility);
+    setArmor(armor);
+    setAttack(attack);
+    setCannons(cannons);
+    setSpeed(speed);
+    setHealth(health);
+    setCargohold(cargohold);
+    setValue(value);
   }
 
   // Getters
-  public String getDescription() {
-    return description;
-  }
-  public int[] getStats() {
-    return stats;
-  }
-  public int getCannons() {
-    return cannons;
+  public String getName() {
+    return name;
   }
   public String getType() {
     return type;
   }
-  public double[] getEquipment() {
-    return equipment;
+  public String getDescription() {
+    return description;
+  }
+  public double getAgility() {
+    return agility;
+  }
+  public double getArmor() {
+    return armor;
+  }
+  public double getAttack() {
+    return attack;
+  }
+  public int getCannons() {
+    return cannons;
+  }
+  public double getSpeed() {
+    return speed;
+  }
+  public double getHealth() {
+    return health;
+  }
+  public int getCargohold() {
+    return cargohold;
+  }
+  public double getValue() {
+    return value;
+  }
+  public Item[] getFittings() {
+    return fittings;
   }
 
   // Setters
-  public void setDescription(String description) {
-    this.description = description;
-  }
-  public void setStats(int[] stats) {
-    this.stats = stats;
-  }
-  public int setCannons() {
-    return cannons;
+  public void setName(String name) {
+    this.name = name;
   }
   public void setType(String type) {
     this.type = type;
   }
-  public void setEquipment(double[] equipment) {
-    this.equipment = equipment;
+  public void setDescription(String description) {
+    this.description = description;
   }
-  
-  // OVERRIDES
-  @Override
-  public int hashCode() {
-    int hash = 7;
-    hash = 31 * hash + Objects.hashCode(this.description);
-    hash = 31 * hash + Arrays.hashCode(this.stats);
-    hash = 31 * hash + Objects.hashCode(this.type);
-    hash = 31 * hash + Arrays.hashCode(this.equipment);
-    return hash;
+  public void setAgility(double agility) {
+    this.agility = agility;
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    final Ship other = (Ship) obj;
-    if (!Objects.equals(this.description, other.description)) {
-      return false;
-    }
-    if (!Objects.equals(this.type, other.type)) {
-      return false;
-    }
-    if (!Arrays.equals(this.stats, other.stats)) {
-      return false;
-    }
-    if (!Arrays.equals(this.equipment, other.equipment)) {
-      return false;
-    }
-    return true;
+  public void setArmor(double armor) {
+    this.armor = armor;
   }
-
-  @Override
-  public String toString() {
-    return "Ship{" + "description=" + description + ", stats=" + stats + ", type=" + type + ", equipment=" + equipment + '}';
+  public void setAttack(double attack) {
+    this.attack = attack;
   }
+  public void setCannons(int cannons) {
+    this.cannons = cannons;
+  }
+  public void setSpeed(double speed) {
+    this.speed = speed;
+  }
+  public void setHealth(double health) {
+    this.health = health;
+  }
+  public void setCargohold(int cargohold) {
+    this.cargohold = cargohold;
+  }
+  public void setValue(double value) {
+    this.value = value;
+  }
+  public void setFittings(Item[] fittings) {
+    this.fittings = fittings;
+  } 
 }

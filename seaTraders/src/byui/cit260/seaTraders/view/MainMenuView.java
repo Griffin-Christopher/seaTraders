@@ -7,7 +7,6 @@ package byui.cit260.seaTraders.view;
 
 import byui.cit260.seaTraders.control.CombatControl;
 import byui.cit260.seaTraders.control.GameControl;
-import java.util.Scanner;
 import seatraders.SeaTraders;
 
 /**
@@ -26,9 +25,11 @@ public class MainMenuView extends View {
         + "\nT - Game Settings"
         + "\nH - How To Play"
         + "\nQ - Quit Game"
+        /*
         + "\nC - Combat Test"
         + "\nD - Damage Test"
         + "\nM - Movement Test"    
+         */
         + "\n----------------------------------------");
   }
 
@@ -57,6 +58,7 @@ public class MainMenuView extends View {
       case "Q":
         this.quitGame();
         break;
+      /*
       case "C":
         this.combatTest();
         break;
@@ -66,6 +68,7 @@ public class MainMenuView extends View {
       case "M":
         this.movementTest();
         break;
+      */
       default:
         System.out.println("\n*** Invalid selection *** Try again.");
     }

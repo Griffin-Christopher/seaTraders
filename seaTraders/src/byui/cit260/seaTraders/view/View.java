@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Christopher
+ * @author Christopher Griffin
  */
 public abstract class View implements ViewInterface {
   
@@ -23,6 +23,7 @@ public abstract class View implements ViewInterface {
     this.displayMessage = message;
   }
   
+  // Overrides
   @Override
   public void display() {
     boolean done = false; // Start unfinished

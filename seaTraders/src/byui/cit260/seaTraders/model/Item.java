@@ -6,8 +6,6 @@
 package byui.cit260.seaTraders.model;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Objects;
 
 /**
  *
@@ -17,82 +15,57 @@ public class Item implements Serializable {
   
   // Variables
   private String name;
-  private String description;
-  private int[] stats;
   private String type;
+  private String description;
+  private double agility;
+  private double armor;
+  private double attack;
+  private double speed;
+  private double health;
+  private double value;
   
-  // Constructor
+  // Constructors
   public Item() {
+  }
+  public Item(String name, String type, String description, double agility,
+          double armor, double attack, double speed, double health, double value) {
+    this.name = name;
+    this.type = type;
+    this.description = description;
+    this.agility = agility;
+    this.armor = armor;
+    this.attack = attack;
+    this.speed = speed;
+    this.health = health;
+    this.value = value;
   }
 
   // Getters
   public String getName() {
     return name;
   }
-  public String getDescription() {
-    return description;
-  }
-  public int[] getStats() {
-    return stats;
-  }
   public String getType() {
     return type;
   }
-
-  // Setters
-  public void setName(String name) {
-    this.name = name;
+  public String getDescription() {
+    return description;
   }
-  public void setDescription(String description) {
-    this.description = description;
+  public double getAgility() {
+    return agility;
   }
-  public void setStats(int[] stats) {
-    this.stats = stats;
+  public double getArmor() {
+    return armor;
   }
-  public void setType(String type) {
-    this.type = type;
+  public double getAttack() {
+    return attack;
   }
-  
-  // OVERRIDES
-  @Override
-  public int hashCode() {
-    int hash = 3;
-    hash = 89 * hash + Objects.hashCode(this.name);
-    hash = 89 * hash + Objects.hashCode(this.description);
-    hash = 89 * hash + Arrays.hashCode(this.stats);
-    hash = 89 * hash + Objects.hashCode(this.type);
-    return hash;
+  public double getSpeed() {
+    return speed;
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    final Item other = (Item) obj;
-    if (!Objects.equals(this.name, other.name)) {
-      return false;
-    }
-    if (!Objects.equals(this.description, other.description)) {
-      return false;
-    }
-    if (!Objects.equals(this.type, other.type)) {
-      return false;
-    }
-    if (!Arrays.equals(this.stats, other.stats)) {
-      return false;
-    }
-    return true;
+  public double getHealth() {
+    return health;
   }
-
-  @Override
-  public String toString() {
-    return "Item{" + "name=" + name + ", description=" + description + ", stats=" + stats + ", type=" + type + '}';
+  public double getValue() {
+    return value;
   }
 }

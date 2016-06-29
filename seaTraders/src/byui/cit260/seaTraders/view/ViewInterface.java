@@ -7,7 +7,7 @@ package byui.cit260.seaTraders.view;
 
 /**
  *
- * @author Christopher
+ * @author Christopher Griffin
  */
 public interface ViewInterface {
   public void display();

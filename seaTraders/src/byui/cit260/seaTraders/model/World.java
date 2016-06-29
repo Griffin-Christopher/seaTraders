@@ -5,8 +5,8 @@
  */
 package byui.cit260.seaTraders.model;
 
+import byui.cit260.seaTraders.model.location.Location;
 import java.io.Serializable;
-import java.util.Arrays;
 
 /**
  *
@@ -17,10 +17,13 @@ public class World implements Serializable {
   // Variables
   private int rowCount;
   private int columnCount;
-  private String[] transitions;
+  private String[] transition;
+  private Location[] location;
   
   // Constructor
-  public World() {
+  public World(int rows, int columns) {
+    setRowCount(rows);
+    setColumnCount(columns);
   }
 
   // Getters
@@ -30,8 +33,11 @@ public class World implements Serializable {
   public int getColumnCount() {
     return columnCount;
   }
-  public String[] getTransitions() {
-    return transitions;
+  public String[] getTransition() {
+    return transition;
+  }
+  public Location[] getLocation() {
+    return location;
   }
   
   // Setters
@@ -41,46 +47,10 @@ public class World implements Serializable {
   public void setColumnCount(int columnCount) {
     this.columnCount = columnCount;
   }
-  public void setTransitions(String[] transitions) {
-    this.transitions = transitions;
+  public void setTransition(String[] transition) {
+    this.transition = transition;
   }
-  
-  // OVERRIDES
-  @Override
-  public int hashCode() {
-    int hash = 7;
-    hash = 37 * hash + this.rowCount;
-    hash = 37 * hash + this.columnCount;
-    hash = 37 * hash + Arrays.deepHashCode(this.transitions);
-    return hash;
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    final World other = (World) obj;
-    if (this.rowCount != other.rowCount) {
-      return false;
-    }
-    if (this.columnCount != other.columnCount) {
-      return false;
-    }
-    if (!Arrays.deepEquals(this.transitions, other.transitions)) {
-      return false;
-    }
-    return true;
-  }
-
-  @Override
-  public String toString() {
-    return "World{" + "rowCount=" + rowCount + ", columnCount=" + columnCount + ", transitions=" + transitions + '}';
+  public void setLocation(Location[] location) {
+    this.location = location;
   }
 }

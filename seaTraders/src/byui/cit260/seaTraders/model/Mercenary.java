@@ -11,29 +11,43 @@ import java.io.Serializable;
  *
  * @author Christopher Griffin
  */
-
-public class NPC implements Serializable { 
+public class Mercenary implements Serializable {
   
   // Variables
+  private String name;
+  private String type;
+  private String description;
   private double agility;
   private double armor;
   private double attack;
   private double speed;
   private double health;
+  private double value;
   
   // Constructor
-  public NPC() {  
+  public Mercenary(String name, String type, String description, double agility,
+          double armor, double attack, double speed, double health, double value) {
+    this.name = name;
+    this.type = type;
+    this.description = description;
+    this.agility = agility;
+    this.armor = armor;
+    this.attack = attack;
+    this.speed = speed;
+    this.health = health;
+    this.value = value;
   }
-  
-  public NPC(double agility, double armor, double attack, double speed, double health) {
-    setAgility(agility);
-    setArmor(armor);
-    setAttack(attack);
-    setSpeed(speed);
-    setHealth(health);
-  }
-  
+
   // Getters
+  public String getName() {
+    return name;
+  }
+  public String getType() {
+    return type;
+  }
+  public String getDescription() {
+    return description;
+  }
   public double getAgility() {
     return agility;
   }
@@ -49,21 +63,7 @@ public class NPC implements Serializable {
   public double getHealth() {
     return health;
   }
-  
-  // Setters
-  public void setAgility(double agility) {
-    this.agility = agility;
-  }
-  public void setArmor(double armor) {
-    this.armor = armor;
-  }
-  public void setAttack(double attack) {
-    this.attack = attack;
-  }
-  public void setSpeed(double speed) {
-    this.speed = speed;
-  }
-  public void setHealth(double health) {
-    this.health = health;
+  public double getValue() {
+    return value;
   }
 }

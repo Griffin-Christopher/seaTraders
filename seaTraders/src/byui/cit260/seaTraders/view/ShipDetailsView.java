@@ -5,13 +5,16 @@
  */
 package byui.cit260.seaTraders.view;
 
+import byui.cit260.seaTraders.control.InventoryControl;
+import byui.cit260.seaTraders.model.Item;
+
 /**
  *
- * @author Christopher Griffin
+ * @author Christopher
  */
-public class GameMenuView extends View {  
+public class ShipDetailsView extends View {
   // Default Constructor
-  public GameMenuView() {
+  public ShipDetailsView() {
     super("\n----------------------------------------"
         + "\n| STATUS                               |"
         + "\n----------------------------------------"
@@ -19,19 +22,12 @@ public class GameMenuView extends View {
         + "\nJ – Journal"
         + "\nQ – Quest Log"
         + "\nR – Resources"
-        + "\nD – Ship Details"
         + "\nM - Return to Main Menu"
         + "\n----------------------------------------"
-        + "\n| SHIPYARD                             |"
+        + "\n| ITEM CATALOG                         |"
         + "\n----------------------------------------"
-        + "\nT – Travel"
-        + "\nP – Repair Ship"
-        + "\nB – Buy/Sell Ship Fittings"
-        + "\nU – Upgrade Ship"
-        + "\nS – Shore Leave"
-        + "\n? - Help"
-        + "\n----------------------------------------"
-        + "\nWhat would you like to do?");
+        + "\nPress 'S' to sort and display a list of all ship fittings found in"
+        + "\nthe Item Catalog.");
   }
 
   @Override
@@ -67,28 +63,10 @@ public class GameMenuView extends View {
       case "R":
         this.displayResources();
         break;
-      case "D":
-        this.displayShipDetails();
-        break;
       case "M":
         return true;
-      case "T":
-        this.movePlayer();
-        break;
-      case "P":
-        this.repairShip();
-        break;
-      case "B":
-        this.fitShip();
-        break;
-      case "U":
-        this.upgradeShip();
-        break;
       case "S":
-        this.shoreLeave();
-        break;
-      case "?":
-        this.displayHelp();
+        this.displayShipFittings();
         break;
       default:
         System.out.println("\n*** Invalid selection *** Try again.");
@@ -112,34 +90,22 @@ public class GameMenuView extends View {
   private void displayResources() {
     System.out.println("\n*** displayResources() function called ***");
   }
-
-  private void displayShipDetails() {
-    // Display Ship Details
-    ShipDetailsView shipDetails = new ShipDetailsView();
-    shipDetails.display();
-  }
-
-  private void movePlayer() {
-    System.out.println("\n*** movePlayer() function called ***");
-  }
-
-  private void repairShip() {
-    System.out.println("\n*** repairShip() function called ***");
-  }
-
-  private void fitShip() {
-    System.out.println("\n*** fitShip() function called ***");
-  }
-
-  private void upgradeShip() {
-    System.out.println("\n*** upgradeShip() function called ***");
-  }
   
-  private void shoreLeave() {
-    System.out.println("\n*** shoreLeave() function called ***");
+  private void displayShipFittings() {
+    // Fetch displayed inventory
+    InventoryControl sortTest = new InventoryControl();
+    Item[] inventory = sortTest.sortInventory();
+
+    // Display Inventory
+    StringBuilder line;
+    System.out.println("");
+    for (Item item : inventory) {
+      // 40 character line
+      line = new StringBuilder("                                        ");
+      line.insert(0, item.getName());
+      line.insert(20, item.getType());
+      line.insert(30, item.getValue());
+      System.out.println(line.toString());
+    }
   }
-  
-  private void displayHelp() {
-    System.out.println("\n*** displayHelp() function called ***");
-  } 
 }
