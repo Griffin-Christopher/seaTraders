@@ -6,6 +6,7 @@
 package byui.cit260.seaTraders.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,7 +15,7 @@ import java.io.Serializable;
 public class Player implements Serializable {  
   
   // Objects
-  private static Mercenary[] crew;
+  private static ArrayList<Mercenary> crew;
   
   // Variables
   private static String name;
@@ -27,7 +28,7 @@ public class Player implements Serializable {
   private static int[] resources; // Gold | Food | Ammo | Lumber | Cotton | Iron
   private static int fame;
   private static int rank;
-  private static String[] journal;
+  private static ArrayList<String> journal;
   
   // Constructors
   public Player() {
@@ -41,11 +42,11 @@ public class Player implements Serializable {
   }
 
   // Getters
-  public static Mercenary[] getCrew() {
+  public static ArrayList<Mercenary> getCrew() {
     return crew;
   }
   public static Mercenary getCrewMember(int index) {
-    return crew[index];
+    return crew.get(index);
   }
   public static String getName() {
     return name;
@@ -78,16 +79,16 @@ public class Player implements Serializable {
   public static int getRank() {
     return rank;
   }
-  public static String[] getJournal() {
+  public static ArrayList<String> getJournal() {
     return journal;
   }
 
   // Setters
-  public static void setCrew(Mercenary[] crew) {
+  public static void setCrew(ArrayList<Mercenary> crew) {
     Player.crew = crew;
   }
   public static void setCrewMember(int index, Mercenary crewMember) {
-    Player.crew[index] = crewMember;
+    Player.crew.set(index, crewMember);
   }
   public static void setName(String name) {
     Player.name = name;
@@ -122,10 +123,10 @@ public class Player implements Serializable {
   public static void setRank(int rank) {
     Player.rank = rank;
   }
-  public static void setJournal(String[] journal) {
+  public static void setJournal(ArrayList<String> journal) {
     Player.journal = journal;
   }
   public static void setJournalEntry(int index, String entry) {
-    Player.journal[index] = entry;
+    Player.journal.set(index, entry);
   }
 }
