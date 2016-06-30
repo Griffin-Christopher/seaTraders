@@ -127,8 +127,7 @@ public class MainMenuView extends View {
     CombatControl damageTest = new CombatControl(Game.getNPCOne());
     
     // Simulate Attack
-    double damage = damageTest.calcDamage(Game.getCurrentPlayer(), 
-            Game.getNPCOne(), Game.getCurrentShip());
+    double damage = damageTest.calcDamage(Game.getNPCOne());
     System.out.println("\nPlayer deals " + damage + " damage to the Pirate Ship!");
   }
   

@@ -5,7 +5,6 @@
  */
 package byui.cit260.seaTraders.control;
 
-import byui.cit260.seaTraders.model.Game;
 import byui.cit260.seaTraders.model.NPC;
 import byui.cit260.seaTraders.model.Player;
 import byui.cit260.seaTraders.model.Ship;
@@ -35,7 +34,7 @@ public class CombatControl {
     
     // Calculate Action Intervals
     if (CombatControl.npcOne.getAgility() != 0) {
-      this.playerSpeed = calcInitiative(Game.getCurrentPlayer());
+      this.playerSpeed = calcInitiative();
       this.npcOneSpeed = calcInitiative(CombatControl.npcOne);
     }
   }
@@ -47,8 +46,8 @@ public class CombatControl {
     CombatControl.npcTwo = npcTwo;
     
     // Calculate Action Intervals
-    if (Game.getCurrentPlayer().getAgility() != 0) {
-      this.playerSpeed = calcInitiative(Game.getCurrentPlayer());
+    if (Player.getAgility() != 0) {
+      this.playerSpeed = calcInitiative();
       this.npcOneSpeed = calcInitiative(CombatControl.npcOne);
       this.npcTwoSpeed = calcInitiative(CombatControl.npcTwo);
     }
@@ -96,14 +95,14 @@ public class CombatControl {
   }
 
   // Combat Initialization
-  public double calcInitiative(Player player) {
-    if (player.getAgility() < 0) {
+  public double calcInitiative() {
+    if (Player.getAgility() < 0) {
       System.out.println("\n*** ERROR: Negative Player Agility Value ***");
       return -1;
     }
     // ELSE
-    System.out.println("\nP CALC " + player.getAgility());
-    double actionInterval = round(1 / player.getAgility(), 2);
+    System.out.println("\nP CALC " + Player.getAgility());
+    double actionInterval = round(1 / Player.getAgility(), 2);
     return actionInterval;
   }
   public double calcInitiative(NPC npc) {
@@ -156,9 +155,9 @@ public class CombatControl {
     setTimer(0);
   }
   
-  public double calcDamage(Player player, NPC npc, Ship ship) {
+  public double calcDamage(NPC npc) {
     // Input Checks
-    if (player.getAttack() < 0) {
+    if (Player.getAttack() < 0) {
       System.out.println("\n*** ERROR: Negative Player Attack Value ***");
       return -1;
     }
@@ -166,13 +165,13 @@ public class CombatControl {
       System.out.println("\n*** ERROR: Negative Pirate Armor Value ***");
       return -1;
     }
-    if (ship.getCannons() < 0) {
+    if (Ship.getCannons() < 0) {
       System.out.println("\n*** ERROR: Negative Ship Cannons Value ***");
       return -1;
     }
    
     // Damage Calculation
-    double damage = (player.getAttack() - npc.getArmor()) * ship.getCannons();
+    double damage = (Player.getAttack() - npc.getArmor()) * Ship.getCannons();
     
     // Negative Damage Conversion
     if (damage < 0) {
