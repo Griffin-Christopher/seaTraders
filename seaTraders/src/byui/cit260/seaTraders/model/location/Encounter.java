@@ -5,6 +5,7 @@
  */
 package byui.cit260.seaTraders.model.location;
 
+import byui.cit260.seaTraders.model.NPC;
 import java.io.Serializable;
 
 /**
@@ -12,6 +13,9 @@ import java.io.Serializable;
  * @author Christopher Griffin
  */
 public class Encounter implements Serializable {
+  
+  // Objects
+  private NPC[] npcs;
   
   // Variables
   private String description;
@@ -22,6 +26,12 @@ public class Encounter implements Serializable {
   }
 
   // Getters
+  public NPC[] getNPCS() {
+    return npcs;
+  }
+  public NPC getNPC(int index) {
+    return npcs[index];
+  }
   public String getDescription() {
     return description;
   }
@@ -30,6 +40,12 @@ public class Encounter implements Serializable {
   }
   
   // Setters
+  public void setNPCS(NPC[] npcs) {
+    this.npcs = npcs;
+  }
+  public void setNPC(int index, NPC npc) {
+    this.npcs[index] = npc;
+  }
   public void setDescription(String description) {
     this.description = description;
   }

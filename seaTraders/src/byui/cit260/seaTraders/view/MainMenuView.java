@@ -7,7 +7,7 @@ package byui.cit260.seaTraders.view;
 
 import byui.cit260.seaTraders.control.CombatControl;
 import byui.cit260.seaTraders.control.GameControl;
-import seatraders.SeaTraders;
+import byui.cit260.seaTraders.model.Game;
 
 /**
  *
@@ -78,7 +78,7 @@ public class MainMenuView extends View {
 
   private void newGame() {
     // Create New Game
-    GameControl.createNewGame();
+    GameControl.createNewGame(Game.getCurrentPlayer());
     
     // Display Game Menu
     GameMenuView gameMenu = new GameMenuView();
@@ -110,24 +110,25 @@ public class MainMenuView extends View {
     System.out.println("\n*** quitGame() function called ***");
   }
 
+  /*
   private void combatTest() {
     // Simulate 1v1
-    CombatControl combatTestOne = new CombatControl(SeaTraders.getNPCOne());
+    CombatControl combatTestOne = new CombatControl(Game.getNPCOne());
     combatTestOne.advanceCombat();
     
     // Simulate 1v2
-    CombatControl combatTestTwo = new CombatControl(SeaTraders.getNPCOne(), 
-            SeaTraders.getNPCTwo());
+    CombatControl combatTestTwo = new CombatControl(Game.getNPCOne(), 
+            Game.getNPCTwo());
     combatTestTwo.advanceCombat();
   }
 
   private void damageTest() {
     // Pass Participants
-    CombatControl damageTest = new CombatControl(SeaTraders.getNPCOne());
+    CombatControl damageTest = new CombatControl(Game.getNPCOne());
     
     // Simulate Attack
-    double damage = damageTest.calcDamage(SeaTraders.getPlayer(), 
-            SeaTraders.getNPCOne(), SeaTraders.getShip());
+    double damage = damageTest.calcDamage(Game.getCurrentPlayer(), 
+            Game.getNPCOne(), Game.getCurrentShip());
     System.out.println("\nPlayer deals " + damage + " damage to the Pirate Ship!");
   }
   
@@ -136,4 +137,5 @@ public class MainMenuView extends View {
     MovementView movementTest = new MovementView();
     movementTest.display();
   }
+  */
 }

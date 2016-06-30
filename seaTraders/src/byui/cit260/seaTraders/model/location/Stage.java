@@ -6,6 +6,7 @@
 package byui.cit260.seaTraders.model.location;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,14 +19,10 @@ public class Stage implements Serializable {
   private String description;
   private String type;
   private double[] inventory;
-  private Encounter[] encounter;
+  private ArrayList<Encounter> encounters;
   
   // Constructor
   public Stage() {
-    for (int i = 0; i < encounter.length; i++) {
-      encounter[i] = new Encounter();
-      encounter[i].setEncounter();
-    }
   }
 
   // Getters

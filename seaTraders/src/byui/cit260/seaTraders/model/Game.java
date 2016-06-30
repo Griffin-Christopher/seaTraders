@@ -6,7 +6,6 @@
 package byui.cit260.seaTraders.model;
 
 import java.io.Serializable;
-import java.util.Arrays;
 
 /**
  *
@@ -14,82 +13,105 @@ import java.util.Arrays;
  */
 public class Game implements Serializable {
   
+  // Objects
+  private static World currentWorld;
+  private static Player currentPlayer;
+  private static Ship currentShip;
+  private static NPC npcOne;
+  private static NPC npcTwo;
+  
   // Variables
-  public static double gameDifficulty = 1.00;
-  public static double pirateRate = 1.00;
-  private int stage;
-  private int[] flags;
-  private double[] playerScore;
+  private static String gameDifficulty = "Normal";
+  private static double difficulty = 1.00;
+  private static String pirateRate = "Normal rate";
+  private static double rate = 1.00;
+  private static boolean[] flags;
+  private static int[] playerScore;
   
   // Constructor
   public Game() {
+    // Reset player's game progress
+    flags = new boolean[10];
+    for (int i = 0; i < flags.length; i++) {
+      setFlag(i, false);
+    }
+    // Reset player's score
+    playerScore = new int[10];
+    for (int i = 0; i < playerScore.length; i++) {
+      setPlayerScore(i, 0);
+    }
   }
   
   // Getters
-  public int getStage() {
-    return stage;
+  public static World getCurrentWorld() {
+    return currentWorld;
   }
-  public int getFlags(int index) {
+  public static Player getCurrentPlayer() {
+    return currentPlayer;
+  }
+  public static Ship getCurrentShip() {
+    return currentShip;
+  }
+  public static NPC getNPCOne() {
+    return npcOne;
+  }
+  public static NPC getNPCTwo() {
+    return npcTwo;
+  }
+  public static String getGameDifficulty() {
+    return gameDifficulty;
+  }
+  public static double getDifficulty() {
+    return difficulty;
+  }
+  public static String getPirateRate() {
+    return pirateRate;
+  }
+  public static double getRate() {
+    return rate;
+  } 
+  public static boolean getFlag(int index) {
     return flags[index];
   }
-  public double getPlayerScore(int index) {
+  public static int getPlayerScore(int index) {
     return playerScore[index];
   }
   
   // Setters
-  public void setStage(int stage) {
-    this.stage = stage;
+  public static void setCurrentWorld(World world) {
+    Game.currentWorld = world;
   }
-  public void setFlags(int[] flags) {
-    this.flags = flags;
+  public static void setCurrentPlayer(Player player) {
+    Game.currentPlayer = player;
   }
-  public void setFlags(int index, int flag) {
-    this.flags[index] = flag;
+  public static void setCurrentShip(Ship ship) {
+    Game.currentShip = ship;
   }
-  public void setPlayerScore(double[] playerScore) {
-    this.playerScore = playerScore;
+  public static void setNPCOne(NPC npc) {
+    Game.npcOne = npc;
   }
-  public void setPlayerScore(int index, double score) {
-    this.playerScore[index] = score;
+  public static void setNPCTwo(NPC npc) {
+    Game.npcTwo = npc;
   }
-  
-  // OVERRIDES
-  @Override
-  public int hashCode() {
-    int hash = 5;
-    hash = 17 * hash + this.stage;
-    hash = 17 * hash + Arrays.hashCode(this.flags);
-    hash = 17 * hash + Arrays.hashCode(this.playerScore);
-    return hash;
+  public static void setGameDifficulty(String difficulty) {
+    Game.gameDifficulty = difficulty;
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    final Game other = (Game) obj;
-    if (this.stage != other.stage) {
-      return false;
-    }
-    if (!Arrays.equals(this.flags, other.flags)) {
-      return false;
-    }
-    if (!Arrays.equals(this.playerScore, other.playerScore)) {
-      return false;
-    }
-    return true;
+  public static void setDifficulty(double difficulty) {
+    Game.difficulty = difficulty;
   }
-
-  @Override
-  public String toString() {
-    return "Game{" + "stage=" + stage + ", flags=" + flags + ", playerScore=" + playerScore + '}';
+  public static void setPirateRate(String rate) {
+    Game.pirateRate = rate;
   }
-  
+  public static void setRate(double rate) {
+    Game.rate = rate;
+  }
+  public static void setFlag(int index, boolean flag) {
+    Game.flags[index] = flag;
+  }
+  public static void setPlayerScore(int[] playerScore) {
+    Game.playerScore = playerScore;
+  }
+  public static void setPlayerScore(int index, int score) {
+    Game.playerScore[index] = score;
+  }
 }

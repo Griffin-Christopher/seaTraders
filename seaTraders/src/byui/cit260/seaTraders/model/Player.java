@@ -6,8 +6,6 @@
 package byui.cit260.seaTraders.model;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Objects;
 
 /**
  *
@@ -15,136 +13,119 @@ import java.util.Objects;
  */
 public class Player implements Serializable {  
   
+  // Objects
+  private static Mercenary[] crew;
+  
   // Variables
-  private String name;
-  private int[] location;
-  private int[] stats;
-  private double agility = 0;
-  private int attack;
-  private double[] resources;
-  private int fame;
-  private int rank;
-  private String[] journal;
+  private static String name;
+  private static int[] location;
+  private static double agility;
+  private static double armor;
+  private static double attack;
+  private static double speed;
+  private static double health;
+  private static int[] resources; // Gold | Food | Ammo | Lumber | Cotton | Iron
+  private static int fame;
+  private static int rank;
+  private static String[] journal;
   
   // Constructors
   public Player() {
-    agility = 1.5;
-    attack = -1;
-  }
-  public Player(int attack) {
-    this.attack = attack;
+    setAgility(1.0);
+    setArmor(0.0);
+    setAttack(0.0);
+    setSpeed(0.0);
+    setHealth(0.0);
+    setFame(0);
+    setRank(0);
   }
 
   // Getters
-  public String getName() {
+  public static Mercenary[] getCrew() {
+    return crew;
+  }
+  public static Mercenary getCrewMember(int index) {
+    return crew[index];
+  }
+  public static String getName() {
     return name;
   }
-  public int[] getLocation() {
+  public static int[] getLocation() {
     return location;
   }
-  public int[] getStats() {
-    return stats;
-  }
-  public double getAgility() {
+  public static double getAgility() {
     return agility;
   }
-  public int getAttack() {
+  public static double getArmor() {
+    return armor;
+  }
+  public static double getAttack() {
     return attack;
   }
-  public double[] getResources() {
+  public static double getSpeed() {
+    return speed;
+  }
+  public static double getHealth() {
+    return health;
+  }
+  public static int[] getResources() {
     return resources;
   }
-  public int getFame() {
+ 
+  public static int getFame() {
     return fame;
   }
-  public int getRank() {
+  public static int getRank() {
     return rank;
   }
-  public String[] getJournal() {
+  public static String[] getJournal() {
     return journal;
   }
-  
+
   // Setters
-  public void setName(String name) {
-    this.name = name;
+  public static void setCrew(Mercenary[] crew) {
+    Player.crew = crew;
   }
-  public void setLocation(int[] location) {
-    this.location = location;
+  public static void setCrewMember(int index, Mercenary crewMember) {
+    Player.crew[index] = crewMember;
   }
-  public void setStats(int[] stats) {
-    this.stats = stats;
+  public static void setName(String name) {
+    Player.name = name;
   }
-  public void setAgility(int agility) {
-    this.agility = agility;
+  public static void setLocation(int[] location) {
+    Player.location = location;
   }
-  public void setAttack(int attack) {
-    this.attack = attack;
+  public static void setAgility(double agility) {
+    Player.agility = agility;
   }
-  public void setResources(double[] resources) {
-    this.resources = resources;
+  public static void setArmor(double armor) {
+    Player.armor = armor;
   }
-  public void setFame(int fame) {
-    this.fame = fame;
+  public static void setAttack(double attack) {
+    Player.attack = attack;
   }
-  public void setRank(int rank) {
-    this.rank = rank;
+  public static void setSpeed(double speed) {
+    Player.speed = speed;
   }
-  public void setJournal(String[] journal) {
-    this.journal = journal;
+  public static void setHealth(double health) {
+    Player.health = health;
   }
-  
-  // OVERRIDES
-  @Override
-  public int hashCode() {
-    int hash = 7;
-    hash = 67 * hash + Objects.hashCode(this.name);
-    hash = 67 * hash + Arrays.hashCode(this.location);
-    hash = 67 * hash + Arrays.hashCode(this.stats);
-    hash = 67 * hash + Arrays.hashCode(this.resources);
-    hash = 67 * hash + this.fame;
-    hash = 67 * hash + this.rank;
-    hash = 67 * hash + Arrays.deepHashCode(this.journal);
-    return hash;
+  public static void setResources(int[] resources) {
+    Player.resources = resources;
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    final Player other = (Player) obj;
-    if (this.fame != other.fame) {
-      return false;
-    }
-    if (this.rank != other.rank) {
-      return false;
-    }
-    if (!Objects.equals(this.name, other.name)) {
-      return false;
-    }
-    if (!Arrays.equals(this.location, other.location)) {
-      return false;
-    }
-    if (!Arrays.equals(this.stats, other.stats)) {
-      return false;
-    }
-    if (!Arrays.equals(this.resources, other.resources)) {
-      return false;
-    }
-    if (!Arrays.deepEquals(this.journal, other.journal)) {
-      return false;
-    }
-    return true;
+  public static void setResource(int index, int resource) {
+    Player.resources[index] = resource;
   }
-
-  @Override
-  public String toString() {
-    return "Player{" + "name=" + name + ", location=" + location + ", stats=" + stats + ", resources=" + resources + ", fame=" + fame + ", rank=" + rank + ", journal=" + journal + '}';
+  public static void setFame(int fame) {
+    Player.fame = fame;
+  }
+  public static void setRank(int rank) {
+    Player.rank = rank;
+  }
+  public static void setJournal(String[] journal) {
+    Player.journal = journal;
+  }
+  public static void setJournalEntry(int index, String entry) {
+    Player.journal[index] = entry;
   }
 }

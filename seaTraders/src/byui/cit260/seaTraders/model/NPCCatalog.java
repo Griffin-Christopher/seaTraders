@@ -70,19 +70,19 @@ public enum NPCCatalog implements Serializable {
   
   // Getters
   public double getAgility() {
-    return agility * Game.gameDifficulty;
+    return agility * Game.getDifficulty();
   }
   public double getArmor() {
-    return armor * Game.gameDifficulty;
+    return armor * Game.getDifficulty();
   }
   public double getAttack() {
-    return attack * Game.gameDifficulty;
+    return attack * Game.getDifficulty();
   }
   public double getSpeed() {
-    return speed * Game.gameDifficulty;
+    return speed * Game.getDifficulty();
   }
   public double getHealth() {
-    return health * Game.gameDifficulty;
+    return health * Game.getDifficulty();
   }
   
   public NPC spawnNPC() {

@@ -18,10 +18,10 @@ public class StartProgramView extends View{
     super("\nPlease enter your name: ");
     
     // Display welcome banner
-    this.displayBanner();
+    displayBanner();
   }
 
-  public void displayBanner() {
+  private void displayBanner() {
     System.out.println(
         "\n**************************************************************"
       + "\n* SEA TRADERS                                                *"
@@ -47,24 +47,24 @@ public class StartProgramView extends View{
     }
     
     // Create a new player with user's name
-    Player player = GameControl.createPlayer(playersName);
+    GameControl.createPlayer(playersName);
     
-    if (player == null) { // Empty value
+    if (Player.getName() == null) { // Empty value
       System.out.println("\nError creating the player.");
       return false;
     }
     
     // Display next view
-    this.displayNextView(player);
+    this.displayNextView();
     
     return true; // Success!
   }
 
-  private void displayNextView(Player player) {
+  private void displayNextView() {
     // Display welcome message
     System.out.println(
             "\n=================================================="
-          + "\n Welcome to the game, " + player.getName() + "."
+          + "\n Welcome to the game, " + Player.getName() + "."
           + "\n We hope you have a lot of fun!"
           + "\n=================================================="
           );

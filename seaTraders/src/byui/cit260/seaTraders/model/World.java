@@ -14,43 +14,73 @@ import java.io.Serializable;
  */
 public class World implements Serializable {
   
-  // Variables
-  private int rowCount;
-  private int columnCount;
-  private String[] transition;
-  private Location[] location;
+  // Objects
+  private static String[] transitions = {""};
+  private static Location[][] worldMap;
   
-  // Constructor
+  // Variables
+  private static int rowCount;
+  private static int columnCount;
+  
+  // Constructors
+  public World() {
+  }
+  
   public World(int rows, int columns) {
+    // Validate world boundaries
+    if (rows < 1 || columns < 1) {
+      System.out.println("The number of rows and columns must be > zero");
+      return;
+    }
+    
+    // Create game world grid
     setRowCount(rows);
     setColumnCount(columns);
+    World.worldMap = new Location[getRowCount()][getColumnCount()];
+    
+    /*
+    **** COME BACK AND MANUALLY ASSIGN LOCATIONS TO WORLD GRID
+    */
+    
+    // Create world locations
+    for (int r = 0; r < rows; r++) {
+      for (int c = 0; c < columns; c++) {
+        Location location = new Location();
+        location.setRow(r);
+        location.setColumn(c);
+        worldMap[r][c] = location;
+      }
+    }
   }
 
   // Getters
-  public int getRowCount() {
+  public static String getTransition(int index) {
+    return transitions[index];
+  }
+  public static Location[][] getWorldMap() {
+    return worldMap;
+  }
+  public static Location getLocation(int row, int column) {
+    return worldMap[row][column];
+  }
+  public static int getRowCount() {
     return rowCount;
   }
-  public int getColumnCount() {
+  public static int getColumnCount() {
     return columnCount;
-  }
-  public String[] getTransition() {
-    return transition;
-  }
-  public Location[] getLocation() {
-    return location;
   }
   
   // Setters
-  public void setRowCount(int rowCount) {
-    this.rowCount = rowCount;
+  public static void setWorldMap(Location[][] worldMap) {
+    World.worldMap = worldMap;
   }
-  public void setColumnCount(int columnCount) {
-    this.columnCount = columnCount;
+  public static void setLocation(int row, int column, Location location) {
+    World.worldMap[row][column] = location;
   }
-  public void setTransition(String[] transition) {
-    this.transition = transition;
+  public static void setRowCount(int rowCount) {
+    World.rowCount = rowCount;
   }
-  public void setLocation(Location[] location) {
-    this.location = location;
+  public static void setColumnCount(int columnCount) {
+    World.columnCount = columnCount;
   }
 }

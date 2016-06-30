@@ -5,12 +5,12 @@
  */
 package byui.cit260.seaTraders.control;
 
+import byui.cit260.seaTraders.model.Game;
 import byui.cit260.seaTraders.model.NPC;
 import byui.cit260.seaTraders.model.Player;
 import byui.cit260.seaTraders.model.Ship;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import seatraders.SeaTraders;
 
 /**
  *
@@ -35,7 +35,7 @@ public class CombatControl {
     
     // Calculate Action Intervals
     if (CombatControl.npcOne.getAgility() != 0) {
-      this.playerSpeed = calcInitiative(SeaTraders.getPlayer());
+      this.playerSpeed = calcInitiative(Game.getCurrentPlayer());
       this.npcOneSpeed = calcInitiative(CombatControl.npcOne);
     }
   }
@@ -47,8 +47,8 @@ public class CombatControl {
     CombatControl.npcTwo = npcTwo;
     
     // Calculate Action Intervals
-    if (SeaTraders.getPlayer().getAgility() != 0) {
-      this.playerSpeed = calcInitiative(SeaTraders.getPlayer());
+    if (Game.getCurrentPlayer().getAgility() != 0) {
+      this.playerSpeed = calcInitiative(Game.getCurrentPlayer());
       this.npcOneSpeed = calcInitiative(CombatControl.npcOne);
       this.npcTwoSpeed = calcInitiative(CombatControl.npcTwo);
     }

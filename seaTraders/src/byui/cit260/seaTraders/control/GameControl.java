@@ -6,7 +6,11 @@
 package byui.cit260.seaTraders.control;
 
 import byui.cit260.seaTraders.model.Game;
+import byui.cit260.seaTraders.model.Item;
 import byui.cit260.seaTraders.model.Player;
+import byui.cit260.seaTraders.model.Ship;
+import byui.cit260.seaTraders.model.ShipCatalog;
+import byui.cit260.seaTraders.model.World;
 import seatraders.SeaTraders;
 
 /**
@@ -15,28 +19,41 @@ import seatraders.SeaTraders;
  */
 public class GameControl {
 
-  public static Player createPlayer(String name) {
+  public static void createPlayer(String name) {
     if (name == null) {  // Name is empty
-      return null;
+      return;
     }
     
     // Create new player
     Player player = new Player();
     player.setName(name);
-    
-    // Save player
-    SeaTraders.setPlayer(player); 
-    
-    return player;
+
+    Game.setCurrentPlayer(player);
   }
 
-  public static Game createNewGame() {
-    // Create New Game
+  public static void createNewGame(Player player) {
+    if (player == null)
+      return;
+    
+    // Create and save new game
     Game game = new Game();
+    SeaTraders.setCurrentGame(game);
     
-    // Save Game
-    SeaTraders.setCurrentGame(game); 
+    // Gold | Food | Ammo | Lumber | Cotton | Iron
+    int[] startingResources = {500, 50, 100, 0, 0, 0};
+    // Initialize Player
+    Player.setResources(startingResources);
     
-    return game;
+    // Initialize Player's Ship
+    Game.setCurrentShip(ShipCatalog.STARTER_SHIP.spawnShip());
+    Item[] playerFittings = ShipControl.createPlayerFittings();
+    Ship.setFittings(playerFittings);
+    Item[] playerCargo = ShipControl.createPlayerCargo();
+    Ship.setCargo(playerCargo);
+    
+    // Initialize World Map
+    World world = WorldControl.createWorld();
+    Game.setCurrentWorld(world);
+    WorldControl.startNewGame(world);
   }  
 }

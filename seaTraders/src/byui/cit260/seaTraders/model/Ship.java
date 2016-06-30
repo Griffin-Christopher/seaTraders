@@ -13,20 +13,24 @@ import java.io.Serializable;
  */
 public class Ship implements Serializable {
   
-  // Variables
-  private String name;
-  private String type;
-  private String description;
-  private double agility;
-  private double armor;
-  private double attack;
-  private int cannons;
-  private double speed;
-  private double health;
-  private int cargohold;
-  private double value;
+  // Objects
+  private static Item[] fittings;
+  private static Item[] cargo;
   
-  private Item[] fittings;
+  // Variables
+  private static String name;
+  private static String type;
+  private static String description;
+  private static double agility;
+  private static double armor;
+  private static double attack;
+  private static int cannons;
+  private static double speed;
+  private static double health;
+  private static int cargohold;
+  private static double value;
+  
+  
   
   // Constructor
   public Ship() {
@@ -49,78 +53,96 @@ public class Ship implements Serializable {
   }
 
   // Getters
-  public String getName() {
+  public static Item[] getFittings() {
+    return fittings;
+  }
+  public static Item getFitting(int index) {
+    return fittings[index];
+  }
+  public static Item[] getCargo() {
+    return cargo;
+  }
+  public static Item getCargoItem(int index) {
+    return cargo[index];
+  }
+  public static String getName() {
     return name;
   }
-  public String getType() {
+  public static String getType() {
     return type;
   }
-  public String getDescription() {
+  public static String getDescription() {
     return description;
   }
-  public double getAgility() {
+  public static double getAgility() {
     return agility;
   }
-  public double getArmor() {
+  public static double getArmor() {
     return armor;
   }
-  public double getAttack() {
+  public static double getAttack() {
     return attack;
   }
-  public int getCannons() {
+  public static int getCannons() {
     return cannons;
   }
-  public double getSpeed() {
+  public static double getSpeed() {
     return speed;
   }
-  public double getHealth() {
+  public static double getHealth() {
     return health;
   }
-  public int getCargohold() {
+  public static int getCargohold() {
     return cargohold;
   }
-  public double getValue() {
+  public static double getValue() {
     return value;
-  }
-  public Item[] getFittings() {
-    return fittings;
   }
 
   // Setters
-  public void setName(String name) {
-    this.name = name;
-  }
-  public void setType(String type) {
-    this.type = type;
-  }
-  public void setDescription(String description) {
-    this.description = description;
-  }
-  public void setAgility(double agility) {
-    this.agility = agility;
-  }
-  public void setArmor(double armor) {
-    this.armor = armor;
-  }
-  public void setAttack(double attack) {
-    this.attack = attack;
-  }
-  public void setCannons(int cannons) {
-    this.cannons = cannons;
-  }
-  public void setSpeed(double speed) {
-    this.speed = speed;
-  }
-  public void setHealth(double health) {
-    this.health = health;
-  }
-  public void setCargohold(int cargohold) {
-    this.cargohold = cargohold;
-  }
-  public void setValue(double value) {
-    this.value = value;
-  }
-  public void setFittings(Item[] fittings) {
-    this.fittings = fittings;
+  public static void setFittings(Item[] fittings) {
+    Ship.fittings = fittings;
   } 
+  public static void setFitting(int index, Item fitting) {
+    Ship.fittings[index] = fitting;
+  }
+  public static void setCargo(Item[] cargo) {
+    Ship.cargo = cargo;
+  }
+  public static void setCargoItem(int index, Item item) {
+    Ship.cargo[index] = item;
+  }
+  public static void setName(String name) {
+    Ship.name = name;
+  }
+  public static void setType(String type) {
+    Ship.type = type;
+  }
+  public static void setDescription(String description) {
+    Ship.description = description;
+  }
+  public static void setAgility(double agility) {
+    Ship.agility = agility;
+  }
+  public static void setArmor(double armor) {
+    Ship.armor = armor;
+  }
+  public static void setAttack(double attack) {
+    Ship.attack = attack;
+  }
+  public static void setCannons(int cannons) {
+    Ship.cannons = cannons;
+  }
+  public static void setSpeed(double speed) {
+    Ship.speed = speed;
+  }
+  public static void setHealth(double health) {
+    Ship.health = health;
+  }
+  public static void setCargohold(int cargohold) {
+    Ship.cargohold = cargohold;
+  }
+  public static void setValue(double value) {
+    Ship.value = value;
+  }
 }

@@ -13,21 +13,26 @@ import java.io.Serializable;
  */
 public class Location implements Serializable {
   
+  // Objects
+  private Stage stage;
+  
   // Variables
   private int row;
   private int column;
   private boolean visited;
   private boolean unlocked;
-  private Stage stage;
+  
   
   // Constructor
   public Location() {
     this.visited = false;
     this.unlocked = false;
-    stage.setStage();
   }
 
   // Getters
+  public Stage getStage() {
+    return stage;
+  }
   public int getRow() {
     return row;
   }
@@ -42,6 +47,9 @@ public class Location implements Serializable {
   }
   
   // Setters
+  public void setStage(Stage stage) {
+    this.stage = stage;
+  }
   public void setRow(int row) {
     this.row = row;
   }

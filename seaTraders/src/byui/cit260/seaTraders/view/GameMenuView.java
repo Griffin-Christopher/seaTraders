@@ -5,6 +5,8 @@
  */
 package byui.cit260.seaTraders.view;
 
+import byui.cit260.seaTraders.model.World;
+
 /**
  *
  * @author Christopher Griffin
@@ -15,6 +17,7 @@ public class GameMenuView extends View {
     super("\n----------------------------------------"
         + "\n| STATUS                               |"
         + "\n----------------------------------------"
+        + "\nW - View World Map"
         + "\nC – Cargo Manifest"
         + "\nJ – Journal"
         + "\nQ – Quest Log"
@@ -55,6 +58,9 @@ public class GameMenuView extends View {
     
     // Check menu option
     switch (choice) {
+      case "W":
+        this.displayWorldMap();
+        break;
       case "C":
         this.displayCargoManifest();
         break;
@@ -97,6 +103,27 @@ public class GameMenuView extends View {
     return false;
   }
 
+  private void displayWorldMap() {
+    // TEMPORARY PLACEHOLDER MAP UNTIL LOCATIONS ARE FINALIZED
+    System.out.println("         === SEA TRADERS WORLD MAP ===      ");
+    System.out.println("   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |");
+    for (int r = 0; r < World.getRowCount(); r++) {
+      System.out.println("---|---|---|---|---|---|---|---|---|---|---|");
+      StringBuilder line = new StringBuilder(44);
+      line.append(" ").append(r).append(" |");
+      for (int c = 0; c < World.getColumnCount(); c++) {
+        if (World.getLocation(r, c).isVisited()) {
+          line.append(" * |");
+        }
+        else {
+          line.append(" ? |");
+        }
+      }
+      System.out.println(line.toString());
+    }
+    System.out.println("---|---|---|---|---|---|---|---|---|---|---|");
+  }
+  
   private void displayCargoManifest() {
     System.out.println("\n*** displayCargoManifest() function called ***");
   }

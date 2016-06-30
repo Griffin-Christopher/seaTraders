@@ -5,8 +5,8 @@
  */
 package byui.cit260.seaTraders.view;
 
+import byui.cit260.seaTraders.model.Game;
 import java.util.Scanner;
-import seatraders.SeaTraders;
 
 /**
  *
@@ -63,8 +63,8 @@ public class GameSettingsView extends View {
     
     // Fetch user choice
     while (!valid) { // Require valid entry
-      String currentDifficulty = SeaTraders.getDifficulty();
-      String currentRate = SeaTraders.getRate();
+      String currentDifficulty = Game.getGameDifficulty();
+      String currentRate = Game.getPirateRate();
       
       // Dynamically display current game settings
       System.out.println("\n----------------------------------------"
@@ -131,7 +131,7 @@ public class GameSettingsView extends View {
       
       // Store New Difficulty
       if (setting != null) {
-        SeaTraders.setDifficulty(setting);
+        Game.setGameDifficulty(setting);
         break; // End loop after valid entry
       }
     }
@@ -169,7 +169,7 @@ public class GameSettingsView extends View {
       
       // Store New Encounter Rate
       if (setting != null) {
-        SeaTraders.setRate(setting);
+        Game.setPirateRate(setting);
         break; // End loop after valid entry
       }
     }

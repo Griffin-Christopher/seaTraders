@@ -9,16 +9,16 @@ import java.io.Serializable;
 
 /**
  *
- * @author Christopher
+ * @author Christopher Griffin
  */
 public enum ShipCatalog implements Serializable {
   
   /******
   * PLOT
   **********************************************************/
-  STARTER_SHIP("NAME", "PLOT", "DESCRIPTION",
-          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),
-  TEMP_SHIP("NAME", "PLOT", "DESCRIPTION",
+  STARTER_SHIP("Trade Cog", "PLOT", "DESCRIPTION",
+          0.00, 0.00, 0.00, 0, 1.00, 100.0, 20, 1000),
+  TEMP_SHIP("Patchwork Vessel", "PLOT", "DESCRIPTION",
           0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),
   
   /********
