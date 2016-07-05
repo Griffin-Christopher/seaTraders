@@ -26,11 +26,11 @@ public class NPC implements Serializable {
   }
   
   public NPC(double agility, double armor, double attack, double speed, double health) {
-    setAgility(agility);
-    setArmor(armor);
-    setAttack(attack);
-    setSpeed(speed);
-    setHealth(health);
+    this.agility = agility;
+    this.armor = armor;
+    this.attack = attack;
+    this.speed = speed;
+    this.health = health;
   }
   
   // Getters

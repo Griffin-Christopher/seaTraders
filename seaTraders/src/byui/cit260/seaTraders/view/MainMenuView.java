@@ -7,8 +7,11 @@ package byui.cit260.seaTraders.view;
 
 import byui.cit260.seaTraders.control.CombatControl;
 import byui.cit260.seaTraders.control.GameControl;
+import byui.cit260.seaTraders.exceptions.CombatControlException;
 import byui.cit260.seaTraders.exceptions.WorldControlException;
 import byui.cit260.seaTraders.model.Game;
+import byui.cit260.seaTraders.model.NPCCatalog;
+import byui.cit260.seaTraders.model.ShipCatalog;
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
@@ -29,11 +32,9 @@ public class MainMenuView extends View {
         + "\nT - Game Settings"
         + "\nH - How To Play"
         + "\nQ - Quit Game"
-        /*
         + "\nC - Combat Test"
         + "\nD - Damage Test"
         + "\nM - Movement Test"    
-         */
         + "\n----------------------------------------");
   }
 
@@ -65,7 +66,6 @@ public class MainMenuView extends View {
       case "Q":
         this.quitGame();
         break;
-      /*
       case "C":
         this.combatTest();
         break;
@@ -75,7 +75,6 @@ public class MainMenuView extends View {
       case "M":
         this.movementTest();
         break;
-      */
       default:
         System.out.println("\n*** Invalid selection *** Try again.");
     }
@@ -151,25 +150,40 @@ public class MainMenuView extends View {
     System.out.println("\n*** quitGame() function called ***");
   }
 
-  /*
   private void combatTest() {
     // Simulate 1v1
-    CombatControl combatTestOne = new CombatControl(Game.getNPCOne());
-    combatTestOne.advanceCombat();
+    try {
+      CombatControl combatTestOne = 
+              new CombatControl(NPCCatalog.PIRATE_BASIC.spawnNPC());
+      combatTestOne.advanceCombat();
+    } catch (CombatControlException me) {
+      System.out.println(me.getMessage());
+    }
     
     // Simulate 1v2
-    CombatControl combatTestTwo = new CombatControl(Game.getNPCOne(), 
-            Game.getNPCTwo());
-    combatTestTwo.advanceCombat();
+    try {
+      CombatControl combatTestTwo = 
+              new CombatControl(NPCCatalog.PIRATE_BASIC.spawnNPC(), 
+                                NPCCatalog.PIRATE_INTERMEDIATE.spawnNPC());
+      combatTestTwo.advanceCombat();
+    } catch (CombatControlException me) {
+      System.out.println(me.getMessage());
+    }
   }
 
   private void damageTest() {
     // Pass Participants
-    CombatControl damageTest = new CombatControl(Game.getNPCOne());
-    
-    // Simulate Attack
-    double damage = damageTest.calcDamage(Game.getNPCOne());
-    System.out.println("\nPlayer deals " + damage + " damage to the Pirate Ship!");
+    try {
+      Game.setCurrentShip(ShipCatalog.STARTER_SHIP.spawnShip());
+      CombatControl damageTest = 
+              new CombatControl(NPCCatalog.PIRATE_BASIC.spawnNPC());
+
+      // Simulate Attack
+      double damage = damageTest.calcDamage(damageTest.getNPCOne());
+      System.out.println("\nPlayer deals " + damage + " damage to the Pirate Ship!");
+    } catch (CombatControlException me) {
+      System.out.println(me.getMessage());
+    }
   }
   
   private void movementTest() {
@@ -177,5 +191,4 @@ public class MainMenuView extends View {
     MovementView movementTest = new MovementView();
     movementTest.display();
   }
-  */
 }

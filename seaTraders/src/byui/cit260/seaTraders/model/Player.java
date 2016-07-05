@@ -34,7 +34,7 @@ public class Player implements Serializable {
   public Player() {
     setAgility(1.0);
     setArmor(0.0);
-    setAttack(0.0);
+    setAttack(20.0);
     setSpeed(0.0);
     setHealth(0.0);
     setFame(0);

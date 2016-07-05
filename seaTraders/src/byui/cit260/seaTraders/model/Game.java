@@ -17,8 +17,6 @@ public class Game implements Serializable {
   private static World currentWorld;
   private static Player currentPlayer;
   private static Ship currentShip;
-  private static NPC npcOne;
-  private static NPC npcTwo;
   
   // Variables
   private static String gameDifficulty = "Normal";
@@ -52,12 +50,6 @@ public class Game implements Serializable {
   public static Ship getCurrentShip() {
     return currentShip;
   }
-  public static NPC getNPCOne() {
-    return npcOne;
-  }
-  public static NPC getNPCTwo() {
-    return npcTwo;
-  }
   public static String getGameDifficulty() {
     return gameDifficulty;
   }
@@ -87,12 +79,7 @@ public class Game implements Serializable {
   public static void setCurrentShip(Ship ship) {
     Game.currentShip = ship;
   }
-  public static void setNPCOne(NPC npc) {
-    Game.npcOne = npc;
-  }
-  public static void setNPCTwo(NPC npc) {
-    Game.npcTwo = npc;
-  }
+ 
   public static void setGameDifficulty(String difficulty) {
     Game.gameDifficulty = difficulty;
   }

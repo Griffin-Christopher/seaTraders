@@ -45,8 +45,8 @@ public enum NPCCatalog implements Serializable {
   /*********
   * PIRATES
   **********************************************************/
-  PIRATE_BASIC(       1.50, 5.00, 10.0,  3.00, 100.0),
-  PIRATE_INTERMEDIATE(1.25, 10.0, 15.0,  2.00, 200.0),
+  PIRATE_BASIC(       1.50, -1.0, 10.0,  3.00, 100.0),
+  PIRATE_INTERMEDIATE(-1.0, 10.0, 15.0,  2.00, 200.0),
   PIRATE_ADVANCED(    1.00, 20.0, 30.0,  1.00, 400.0),
   PIRATE_BOSS(        1.25, 30.0, 50.0,  1.25, 500.0),
   PIRATE_LORD(        1.35, 40.0, 75.0,  1.50, 7500.0),

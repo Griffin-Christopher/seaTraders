@@ -5,6 +5,7 @@
  */
 package byui.cit260.seaTraders.control;
 
+import byui.cit260.seaTraders.exceptions.CombatControlException;
 import byui.cit260.seaTraders.model.NPC;
 import byui.cit260.seaTraders.model.Player;
 import byui.cit260.seaTraders.model.Ship;
@@ -17,8 +18,8 @@ import java.math.RoundingMode;
  */
 public class CombatControl {  
   // Objects
-  private static NPC npcOne = null;
-  private static NPC npcTwo = null;
+  private NPC npcOne;
+  private NPC npcTwo;
   
   // Variables
   private double timer = 0;
@@ -28,32 +29,38 @@ public class CombatControl {
   private double npcTwoSpeed = 0;
   
   // 1v1 Combat Constructor
-  public CombatControl(NPC npcOne) {
+  public CombatControl(NPC npcOne) throws CombatControlException {
     // Store NPC State
-    CombatControl.npcOne = npcOne;
+    this.npcOne = npcOne;
     
     // Calculate Action Intervals
-    if (CombatControl.npcOne.getAgility() != 0) {
+    if (this.npcOne.getAgility() != 0) {
       this.playerSpeed = calcInitiative();
-      this.npcOneSpeed = calcInitiative(CombatControl.npcOne);
+      this.npcOneSpeed = calcInitiative(getNPCOne());
     }
   }
   
   // 1v2 Combat Constructor
-  public CombatControl(NPC npcOne, NPC npcTwo) {
+  public CombatControl(NPC npcOne, NPC npcTwo) throws CombatControlException {
     // Store NPC States
-    CombatControl.npcOne = npcOne;
-    CombatControl.npcTwo = npcTwo;
+    this.npcOne = npcOne;
+    this.npcTwo = npcTwo;
     
     // Calculate Action Intervals
     if (Player.getAgility() != 0) {
       this.playerSpeed = calcInitiative();
-      this.npcOneSpeed = calcInitiative(CombatControl.npcOne);
-      this.npcTwoSpeed = calcInitiative(CombatControl.npcTwo);
+      this.npcOneSpeed = calcInitiative(getNPCOne());
+      this.npcTwoSpeed = calcInitiative(getNPCTwo());
     }
   }
   
   // Getters
+  public NPC getNPCOne() {
+    return npcOne;
+  }
+  public NPC getNPCTwo() {
+    return npcTwo;
+  }
   public double getTimer() {
     return timer;
   }
@@ -95,23 +102,23 @@ public class CombatControl {
   }
 
   // Combat Initialization
-  public double calcInitiative() {
+  public double calcInitiative() throws CombatControlException {
+    System.out.println("\nPlayer Agility: " + Player.getAgility());
     if (Player.getAgility() < 0) {
-      System.out.println("\n*** ERROR: Negative Player Agility Value ***");
-      return -1;
+      throw new CombatControlException("\n"
+              + "*** ERROR: Negative Player Agility Value ***");
     }
     // ELSE
-    System.out.println("\nP CALC " + Player.getAgility());
     double actionInterval = round(1 / Player.getAgility(), 2);
     return actionInterval;
   }
-  public double calcInitiative(NPC npc) {
+  public double calcInitiative(NPC npc) throws CombatControlException {
+    System.out.println("NPC Agility: " + npc.getAgility());
     if (npc.getAgility() < 0) {
-      System.out.println("\n*** ERROR: Negative NPC Agility Value ***");
-      return -1;
+      throw new CombatControlException("\n"
+              + "*** ERROR: Negative NPC Agility Value ***");
     }
     // ELSE
-    System.out.println("\nN CALC " + npc.getAgility());
     double actionInterval = round(1 / npc.getAgility(), 2);
     return actionInterval;
   }
@@ -128,6 +135,7 @@ public class CombatControl {
       System.out.println("NPC Two Speed: " + this.npcTwoSpeed);
     }
     
+    /*
     // Start combat
     for (int i = 0; i < 1000; i++) {
       // Check for new combat round
@@ -151,23 +159,28 @@ public class CombatControl {
       // Advance combat timer
       this.timer += 0.01;
     }
+    */
+    
     // Reset Timer
     setTimer(0);
   }
   
-  public double calcDamage(NPC npc) {
+  public double calcDamage(NPC npc) throws CombatControlException {
     // Input Checks
+    System.out.println("\nPlayer Attack: " + Player.getAttack());
     if (Player.getAttack() < 0) {
-      System.out.println("\n*** ERROR: Negative Player Attack Value ***");
-      return -1;
+      throw new CombatControlException("\n"
+              + "*** ERROR: Negative Player Attack Value ***");
     }
+    System.out.println("NPC Armor: " + npc.getArmor());
     if (npc.getArmor() < 0) {
-      System.out.println("\n*** ERROR: Negative Pirate Armor Value ***");
-      return -1;
+      throw new CombatControlException("\n"
+              + "*** ERROR: Negative Pirate Armor Value ***");
     }
+    System.out.println("Ship Cannons: " + Ship.getCannons());
     if (Ship.getCannons() < 0) {
-      System.out.println("\n*** ERROR: Negative Ship Cannons Value ***");
-      return -1;
+      throw new CombatControlException("\n"
+              + "*** ERROR: Negative Ship Cannons Value ***");
     }
    
     // Damage Calculation

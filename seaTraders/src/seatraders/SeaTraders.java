@@ -34,14 +34,17 @@ public class SeaTraders {
     StartProgramView startProgramView = new StartProgramView();
     
     // Begin Exception Handling
-    try {
-      startProgramView.display();
-    } catch (Throwable te) {
-      System.out.println(te.getMessage());
-      te.printStackTrace();
-      
-      // Restart Program
-      startProgramView.display();
+    boolean testing = true;
+    while (testing == true){
+      try {
+        startProgramView.display();
+      } catch (Throwable te) {
+        System.out.println(te.getMessage());
+        te.printStackTrace();
+
+        // Restart Program
+        //startProgramView.display();
+      }
     }
   } 
 }
