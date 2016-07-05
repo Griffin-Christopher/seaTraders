@@ -5,6 +5,7 @@
  */
 package byui.cit260.seaTraders.control;
 
+import byui.cit260.seaTraders.exceptions.WorldControlException;
 import byui.cit260.seaTraders.model.Game;
 import byui.cit260.seaTraders.model.Item;
 import byui.cit260.seaTraders.model.Player;
@@ -31,7 +32,7 @@ public class GameControl {
     Game.setCurrentPlayer(player);
   }
 
-  public static void createNewGame(Player player) {
+  public static void createNewGame(Player player) throws WorldControlException {
     if (player == null)
       return;
     
@@ -55,5 +56,12 @@ public class GameControl {
     World world = WorldControl.createWorld();
     Game.setCurrentWorld(world);
     WorldControl.startNewGame(world);
+    
+  }  
+  
+  // JUST FOR TESTING THROWN EXCEPTIONS
+  public static void createNewGame(int test) throws WorldControlException {
+    // Run Function Test
+    WorldControl.createWorld(-1);
   }  
 }

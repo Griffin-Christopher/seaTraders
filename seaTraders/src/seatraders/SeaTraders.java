@@ -32,8 +32,16 @@ public class SeaTraders {
   public static void main(String[] args) {
     // Initialize game
     StartProgramView startProgramView = new StartProgramView();
-    startProgramView.display();
     
-    // Initialize Objects
+    // Begin Exception Handling
+    try {
+      startProgramView.display();
+    } catch (Throwable te) {
+      System.out.println(te.getMessage());
+      te.printStackTrace();
+      
+      // Restart Program
+      startProgramView.display();
+    }
   } 
 }

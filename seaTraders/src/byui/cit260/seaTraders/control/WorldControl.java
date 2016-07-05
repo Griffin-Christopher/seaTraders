@@ -5,6 +5,7 @@
  */
 package byui.cit260.seaTraders.control;
 
+import byui.cit260.seaTraders.exceptions.WorldControlException;
 import byui.cit260.seaTraders.model.World;
 import byui.cit260.seaTraders.model.location.Location;
 import byui.cit260.seaTraders.model.location.Stage;
@@ -15,17 +16,30 @@ import byui.cit260.seaTraders.model.location.Stage;
  */
 class WorldControl {
 
-  public static World createWorld() {
+  public static World createWorld() throws WorldControlException {
     // Initialize game world
     World world = new World (10, 10);
-    
+    if (World.getRowCount() != 10 || World.getColumnCount() != 10) {
+      throw new WorldControlException(""
+              + "*** ERROR: World must contain 10 rows and columns. ***");
+    }
     // Generate Stages
-    Stage[] stages = new Stage[25];
+    Stage[] stages = createStages();
     
     // Assign Stages to Locations
     populateLocations(stages);
     
     return world;
+  }
+  
+  // JUST FOR TESTING THROWN EXCEPTIONS
+  public static void createWorld(int test) throws WorldControlException {
+    // Run Function Test
+    World world = new World (4, 4);
+    if (World.getRowCount() != 10 || World.getColumnCount() != 10) {
+      throw new WorldControlException(""
+              + "*** ERROR: World must contain 10 rows and columns. ***");
+    }
   }
 
   public static void startNewGame(World world) {
@@ -49,7 +63,7 @@ class WorldControl {
     stageName.setValue();
     stages[index] = stageName;
     */
-    
+   
     return stages;
   }
   

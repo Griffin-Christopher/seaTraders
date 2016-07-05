@@ -25,7 +25,6 @@ public class World implements Serializable {
   // Constructors
   public World() {
   }
-  
   public World(int rows, int columns) {
     // Validate world boundaries
     if (rows < 1 || columns < 1) {

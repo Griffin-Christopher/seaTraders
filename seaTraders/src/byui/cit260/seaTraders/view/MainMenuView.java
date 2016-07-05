@@ -7,7 +7,10 @@ package byui.cit260.seaTraders.view;
 
 import byui.cit260.seaTraders.control.CombatControl;
 import byui.cit260.seaTraders.control.GameControl;
+import byui.cit260.seaTraders.exceptions.WorldControlException;
 import byui.cit260.seaTraders.model.Game;
+import static java.lang.Double.parseDouble;
+import static java.lang.Integer.parseInt;
 
 /**
  *
@@ -20,6 +23,7 @@ public class MainMenuView extends View {
         + "\n| Main Menu                            |"
         + "\n----------------------------------------"
         + "\nN - New Game"
+        + "\nF - Faulty Game (Test Exceptions)"
         + "\nL - Load Game"
         + "\nS - Save Game"
         + "\nT - Game Settings"
@@ -42,6 +46,9 @@ public class MainMenuView extends View {
     switch (choice) {
       case "N":
         this.newGame();
+        break;
+      case "F":
+        this.faultyGame();
         break;
       case "L":
         this.loadGame();
@@ -78,11 +85,45 @@ public class MainMenuView extends View {
 
   private void newGame() {
     // Create New Game
-    GameControl.createNewGame(Game.getCurrentPlayer());
+    try {
+      GameControl.createNewGame(Game.getCurrentPlayer());
+      
+      // Display Game Menu
+      GameMenuView gameMenu = new GameMenuView();
+      gameMenu.display();
+    } catch (WorldControlException me) {
+      System.out.println(me.getMessage());
+    }
+  }
+  
+  private void faultyGame() {
+    // Create Faulty Game
+    try {
+      GameControl.createNewGame(-1);
+      
+      // Display Game Menu
+      GameMenuView gameMenu = new GameMenuView();
+      gameMenu.display();
+    } catch (WorldControlException me) {
+      System.out.println(me.getMessage());
+    }
     
-    // Display Game Menu
-    GameMenuView gameMenu = new GameMenuView();
-    gameMenu.display();
+    // Test parseInt()
+    String parseInt = "This test will fail!";
+    try {
+      parseInt(parseInt);
+    } catch (NumberFormatException nf) {
+        System.out.println("*** ERROR: Unable to parse INTEGER from string. ***");
+    }
+    
+    
+    // Test parseDouble()
+    String parseDouble = "This test will fail!";
+    try {
+      parseDouble(parseDouble);
+    } catch (NumberFormatException nf) {
+        System.out.println("*** ERROR: Unable to parse DOUBLE from string. ***");
+    }
   }
 
   private void loadGame() {
