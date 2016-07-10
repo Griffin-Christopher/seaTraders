@@ -19,8 +19,7 @@ public enum ShipCatalog implements Serializable {
   STARTER_SHIP("Trade Cog", "PLOT", "DESCRIPTION",
           1.00, 5.00, 20.0, 10, 1.00, 100.0, 20, 1000),
   TEMP_SHIP("Patchwork Vessel", "PLOT", "DESCRIPTION",
-          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),
-  
+          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),  
   /********
   * COMBAT
   **********************************************************/
@@ -29,8 +28,7 @@ public enum ShipCatalog implements Serializable {
   COMBAT_TWO("NAME", "COMBAT", "DESCRIPTION",
           0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),
   COMBAT_THREE("NAME", "COMBAT", "DESCRIPTION",
-          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),
-  
+          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),  
   /*******
   * TRADE
   **********************************************************/
@@ -39,8 +37,7 @@ public enum ShipCatalog implements Serializable {
   TRADE_TWO("NAME", "TRADE", "DESCRIPTION",
           0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),
   TRADE_THREE("NAME", "TRADE", "DESCRIPTION",
-          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),
-  
+          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),  
   /*********
   * HAULING
   **********************************************************/
@@ -49,8 +46,7 @@ public enum ShipCatalog implements Serializable {
   HAULER_TWO("NAME", "HAULER", "DESCRIPTION",
           0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),
   HAULER_THREE("NAME", "HAULER", "DESCRIPTION",
-          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),
-  
+          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),  
   /******
   * NAVY
   **********************************************************/

@@ -5,7 +5,10 @@
  */
 package byui.cit260.seaTraders.view;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import seatraders.SeaTraders;
 
 /**
  *
@@ -15,6 +18,9 @@ public abstract class View implements ViewInterface {
   
   // Variables
   protected String displayMessage;
+  
+  protected final BufferedReader keyboard = SeaTraders.getInFile();
+  protected final PrintWriter console = SeaTraders.getOutFile();
   
   // Constructors
   public View() {
@@ -40,23 +46,28 @@ public abstract class View implements ViewInterface {
   
   @Override
   public String getInput() {
-    Scanner keyboard = new Scanner(System.in); // Get infile for keyboard
     String value = null;                       // Returned value
     boolean valid = false;                     // Begin invalid
     
-    // Fetch user choice
-    while (!valid) { // Require valid entry
-      System.out.println(this.displayMessage);
-      
-      value = keyboard.nextLine(); // Get next typed line
-      value = value.trim();        // Remove leading/trailing blanks
-      
-      if (value.length() < 1) {    // Empty value
-        System.out.println("\nInvalid value: value can not be blank.");
-        continue;
+    try {
+      // Fetch user choice
+      while (!valid) { // Require valid entry
+        this.console.println(this.displayMessage);
+
+        value = this.keyboard.readLine(); // Get next typed line
+        value = value.trim();        // Remove leading/trailing blanks
+
+        if (value.length() < 1) {    // Empty value
+          ErrorView.display(this.getClass().getName(),
+                  "Input can not be blank.");
+          continue;
+        }
+
+        break; // End loop after valid entry
       }
-       
-      break; // End loop after valid entry
+    } catch (IOException e) {
+          ErrorView.display(this.getClass().getName(),
+                  "Unable to read input.");
     }
     
     return value; // Return valid entry

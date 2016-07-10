@@ -23,8 +23,7 @@ public class NPC implements Serializable {
   
   // Constructor
   public NPC() {  
-  }
-  
+  }  
   public NPC(double agility, double armor, double attack, double speed, double health) {
     this.agility = agility;
     this.armor = armor;

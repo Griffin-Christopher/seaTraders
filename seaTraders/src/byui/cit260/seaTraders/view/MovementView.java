@@ -10,6 +10,7 @@ package byui.cit260.seaTraders.view;
  * @author Christopher
  */
 public class MovementView extends View {
+  
   // Default Constructor
   public MovementView() {
     super("\n----------------------------------------"
@@ -66,25 +67,26 @@ public class MovementView extends View {
         this.displayTradingCompany();
         break;
       default:
-        System.out.println("\n*** Invalid location *** Try again.");
+        ErrorView.display(this.getClass().getName(),
+                "Invalid location; please try again.");
     }
     
     return false;
   }
   
   private void displayMercenaryBay() {
-    System.out.println("\n*** displayMercenaryBay() function called ***");
+    this.console.println("\n*** displayMercenaryBay() function called ***");
   }
 
   private void displayNavyWharf() {
-    System.out.println("\n*** displayNavyWharf() function called ***");
+    this.console.println("\n*** displayNavyWharf() function called ***");
   }
 
   private void displayShipyard() {
-    System.out.println("\n*** displayShipyard() function called ***");
+    this.console.println("\n*** displayShipyard() function called ***");
   }
 
   private void displayTradingCompany() {
-    System.out.println("\n*** displayTradingCompany() function called ***");
+    this.console.println("\n*** displayTradingCompany() function called ***");
   }
 }

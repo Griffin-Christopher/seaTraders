@@ -9,24 +9,24 @@ package byui.cit260.seaTraders.exceptions;
  *
  * @author Christopher Griffin
  */
-public class WorldControlException extends Exception {
+public class GameControlException extends Exception {
 
-  public WorldControlException() {
+  public GameControlException() {
   }
 
-  public WorldControlException(String message) {
+  public GameControlException(String message) {
     super(message);
   }
 
-  public WorldControlException(String message, Throwable cause) {
+  public GameControlException(String message, Throwable cause) {
     super(message, cause);
   }
 
-  public WorldControlException(Throwable cause) {
+  public GameControlException(Throwable cause) {
     super(cause);
   }
 
-  public WorldControlException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+  public GameControlException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
     super(message, cause, enableSuppression, writableStackTrace);
-  }  
+  } 
 }

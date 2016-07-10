@@ -10,7 +10,7 @@ import byui.cit260.seaTraders.model.ItemCatalog;
 
 /**
  *
- * @author Christopher
+ * @author Christopher Griffin
  */
 public class InventoryControl {
   

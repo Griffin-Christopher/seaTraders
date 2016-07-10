@@ -5,6 +5,7 @@
  */
 package byui.cit260.seaTraders.control;
 
+import byui.cit260.seaTraders.exceptions.GameControlException;
 import byui.cit260.seaTraders.exceptions.WorldControlException;
 import byui.cit260.seaTraders.model.Game;
 import byui.cit260.seaTraders.model.Item;
@@ -12,6 +13,10 @@ import byui.cit260.seaTraders.model.Player;
 import byui.cit260.seaTraders.model.Ship;
 import byui.cit260.seaTraders.model.ShipCatalog;
 import byui.cit260.seaTraders.model.World;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import seatraders.SeaTraders;
 
 /**
@@ -64,4 +69,32 @@ public class GameControl {
     // Run Function Test
     WorldControl.createWorld(-1);
   }  
+
+  public static void loadGame(String filePath) throws GameControlException {
+    try (FileInputStream fips = new FileInputStream(
+            "saves\\" + filePath + ".ser")) {
+      ObjectInputStream input = new ObjectInputStream(fips);
+      
+      // Import game data
+      Game game = (Game) input.readObject();
+      SeaTraders.setCurrentGame(game);
+    } catch (Exception e) {
+        throw new GameControlException(e.getMessage());
+    }
+  }
+  
+  public static void saveGame(Game currentGame, String filePath) 
+          throws GameControlException {
+    
+    try (FileOutputStream fops = new FileOutputStream(
+            "saves\\" + filePath + ".ser")) {
+      ObjectOutputStream output = new ObjectOutputStream(fops);
+      
+      // Export game data
+      output.writeObject(currentGame);
+      
+    } catch (Exception e) {
+      throw new GameControlException(e.getMessage());
+    }
+  }
 }

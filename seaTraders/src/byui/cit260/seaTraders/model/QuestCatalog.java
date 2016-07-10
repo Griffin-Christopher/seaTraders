@@ -19,8 +19,7 @@ public enum QuestCatalog implements Serializable {
   TUTORIAL_INTRO("PLOT", "DESCRIPTION"),
   TUTORIAL_COMBAT("PLOT", "DESCRIPTION"),
   PLOT_INVESTIGATE("PLOT", "DESCRIPTION"),
-  PLOT_NAVY("PLOT", "DESCRIPTION"),
-  
+  PLOT_NAVY("PLOT", "DESCRIPTION"),  
   /*******
   * TRADE
   **********************************************************/
@@ -28,8 +27,7 @@ public enum QuestCatalog implements Serializable {
   TRADE_TOWN2("TRADE", "Trade Two: DESCRIPTION."),
   TRADE_TOWN3("TRADE", "Trade Three: DESCRIPTION."),
   TRADE_TOWN4("TRADE", "Trade Four: DESCRIPTION."),
-  TRADE_TOWN5("TRADE", "Trade Five: DESCRIPTION."),
-  
+  TRADE_TOWN5("TRADE", "Trade Five: DESCRIPTION."),  
   /*********
   * HAULING
   **********************************************************/
@@ -37,22 +35,19 @@ public enum QuestCatalog implements Serializable {
   HAUL_TOWN2("HAULING", "Haul Two: DESCRIPTION."),
   HAUL_TOWN3("HAULING", "Haul Three: DESCRIPTION."),
   HAUL_TOWN4("HAULING", "Haul Four: DESCRIPTION."),
-  HAUL_TOWN5("HAULING", "Haul Five: DESCRIPTION."),
-  
+  HAUL_TOWN5("HAULING", "Haul Five: DESCRIPTION."), 
   /********
   * ESCORT
   **********************************************************/
   ESCORT_PRISONER("ESCORT", "Escort Prisoner: DESCRIPTION."),
   ESCORT_TREASURE("ESCORT", "Escort Treasure: DESCRIPTION."),
-  ESCORT_VIP("ESCORT", "Escorte VIP: DESCRIPTION."),
-  
+  ESCORT_VIP("ESCORT", "Escorte VIP: DESCRIPTION."), 
   /********
   * RESCUE
   **********************************************************/
   RESCUE_PRINCESS("RESCUE", "Rescue Princess: DESCRIPTION"),
   RESCUE_MERCHANT("RESCUE", "Resuce Merchant: DESCRIPTION."),
-  RESCUE_HOSTAGE("RESCUE", "Rescue Navy Hostage: DESCRIPTION."),
-  
+  RESCUE_HOSTAGE("RESCUE", "Rescue Navy Hostage: DESCRIPTION."), 
   /******
   * HUNT
   **********************************************************/

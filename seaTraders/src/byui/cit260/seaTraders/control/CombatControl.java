@@ -9,17 +9,22 @@ import byui.cit260.seaTraders.exceptions.CombatControlException;
 import byui.cit260.seaTraders.model.NPC;
 import byui.cit260.seaTraders.model.Player;
 import byui.cit260.seaTraders.model.Ship;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import seatraders.SeaTraders;
 
 /**
  *
- * @author Christopher
+ * @author Christopher Griffin
  */
 public class CombatControl {  
+  
   // Objects
   private NPC npcOne;
   private NPC npcTwo;
+  
+  private final PrintWriter console = SeaTraders.getOutFile();
   
   // Variables
   private double timer = 0;
@@ -103,7 +108,7 @@ public class CombatControl {
 
   // Combat Initialization
   public double calcInitiative() throws CombatControlException {
-    System.out.println("\nPlayer Agility: " + Player.getAgility());
+    this.console.println("\nPlayer Agility: " + Player.getAgility());
     if (Player.getAgility() < 0) {
       throw new CombatControlException("\n"
               + "*** ERROR: Negative Player Agility Value ***");
@@ -113,7 +118,7 @@ public class CombatControl {
     return actionInterval;
   }
   public double calcInitiative(NPC npc) throws CombatControlException {
-    System.out.println("NPC Agility: " + npc.getAgility());
+    this.console.println("NPC Agility: " + npc.getAgility());
     if (npc.getAgility() < 0) {
       throw new CombatControlException("\n"
               + "*** ERROR: Negative NPC Agility Value ***");
@@ -128,11 +133,11 @@ public class CombatControl {
    **/
   public void advanceCombat() {
     // Display Speeds
-    System.out.println("\n*** COMBATANTS ***");
-    System.out.println("Player Speed: " + this.playerSpeed);
-    System.out.println("NPC One Speed: " + this.npcOneSpeed);
+    this.console.println("\n*** COMBATANTS ***");
+    this.console.println("Player Speed: " + this.playerSpeed);
+    this.console.println("NPC One Speed: " + this.npcOneSpeed);
     if (npcTwo != null) {
-      System.out.println("NPC Two Speed: " + this.npcTwoSpeed);
+      this.console.println("NPC Two Speed: " + this.npcTwoSpeed);
     }
     
     /*
@@ -140,20 +145,20 @@ public class CombatControl {
     for (int i = 0; i < 1000; i++) {
       // Check for new combat round
       if (i == 0 || i % 100 == 0) {
-        System.out.println("\n*** ROUND: " + this.round + " ***");
+        this.console.println("\n*** ROUND: " + this.round + " ***");
         // Update Combat Round
         this.round += 1;
       }
 
       // Check for combat action(s)
       if (i != 0 && this.timer / this.playerSpeed == 0) {
-        System.out.println(this.timer + " - Player Action");
+        this.console.println(this.timer + " - Player Action");
       }
       if (i != 0 && this.timer % this.npcOneSpeed == 0) {
-        System.out.println(this.timer + " - Pirate One Action");
+        this.console.println(this.timer + " - Pirate One Action");
       }
       if (i != 0 && this.timer % this.npcTwoSpeed == 0) {
-        System.out.println(this.timer + " - Pirate Two Action");
+        this.console.println(this.timer + " - Pirate Two Action");
       }
       
       // Advance combat timer
@@ -167,17 +172,17 @@ public class CombatControl {
   
   public double calcDamage(NPC npc) throws CombatControlException {
     // Input Checks
-    System.out.println("\nPlayer Attack: " + Player.getAttack());
+    this.console.println("\nPlayer Attack: " + Player.getAttack());
     if (Player.getAttack() < 0) {
       throw new CombatControlException("\n"
               + "*** ERROR: Negative Player Attack Value ***");
     }
-    System.out.println("NPC Armor: " + npc.getArmor());
+    this.console.println("NPC Armor: " + npc.getArmor());
     if (npc.getArmor() < 0) {
       throw new CombatControlException("\n"
               + "*** ERROR: Negative Pirate Armor Value ***");
     }
-    System.out.println("Ship Cannons: " + Ship.getCannons());
+    this.console.println("Ship Cannons: " + Ship.getCannons());
     if (Ship.getCannons() < 0) {
       throw new CombatControlException("\n"
               + "*** ERROR: Negative Ship Cannons Value ***");

@@ -5,13 +5,14 @@
  */
 package byui.cit260.seaTraders.view;
 
-import java.util.Scanner;
+import java.io.IOException;
 
 /**
  *
  * @author Christopher Griffin
  */
-public class HelpMenuView extends View{
+public class HelpMenuView extends View {
+  
   // Default Constructor
   public HelpMenuView() {
     super("\n========================================"
@@ -45,23 +46,28 @@ public class HelpMenuView extends View{
   
   @Override
   public String getInput() {
-    Scanner keyboard = new Scanner(System.in); // Get infile for keyboard
     String value = "";                         // Returned value
     boolean valid = false;                     // Begin invalid
     
-    // Fetch user choice
-    while (!valid) { // Require valid entry
-      System.out.println(this.displayMessage);
-      
-      value = keyboard.nextLine(); // Get next typed line
-      value = value.trim();        // Remove leading/trailing blanks
-      
-      if (value.length() < 1) {    // Empty value
-        System.out.println("\nInvalid value: value can not be blank.");
-        valid = true;
+    try {
+      // Fetch user choice
+      while (!valid) { // Require valid entry
+        this.console.println(this.displayMessage);
+
+        value = this.keyboard.readLine(); // Get next typed line
+        value = value.trim();        // Remove leading/trailing blanks
+
+        if (value.length() < 1) {    // Empty value
+          ErrorView.display(this.getClass().getName(),
+                  "Input cannot be blank.");
+          valid = true;
+        }
+
+        break; // End loop after valid entry
       }
-      
-      break; // End loop after valid entry
+    } catch (IOException e) {
+          ErrorView.display(this.getClass().getName(),
+                  "Unable to read input.");
     }
     
     return value; // Return valid entry

@@ -13,6 +13,7 @@ import byui.cit260.seaTraders.model.Player;
  * @author Christopher Griffin
  */
 public class StartProgramView extends View{
+  
   // Default Constructor
   public StartProgramView() {
     super("\nPlease enter your name: ");
@@ -22,7 +23,7 @@ public class StartProgramView extends View{
   }
 
   private void displayBanner() {
-    System.out.println(
+    this.console.println(
         "\n**************************************************************"
       + "\n* SEA TRADERS                                                *"
       + "\n* ===========                                                *"
@@ -41,8 +42,8 @@ public class StartProgramView extends View{
   public boolean doAction(String playersName) {
     // Check for 2+ characters
     if (playersName.length() < 2) {
-      System.out.println("\nInvalid players name: "
-        + "The name must be greater than one character in length");
+      ErrorView.display(this.getClass().getName(),
+              "Player name must be greater than one character in length.");
       return false;
     }
     
@@ -50,7 +51,8 @@ public class StartProgramView extends View{
     GameControl.createPlayer(playersName);
     
     if (Player.getName() == null) { // Empty value
-      System.out.println("\nError creating the player.");
+      ErrorView.display(this.getClass().getName(),
+              "Unable to create player.");
       return false;
     }
     
@@ -62,7 +64,7 @@ public class StartProgramView extends View{
 
   private void displayNextView() {
     // Display welcome message
-    System.out.println(
+    this.console.println(
             "\n=================================================="
           + "\n Welcome to the game, " + Player.getName() + "."
           + "\n We hope you have a lot of fun!"

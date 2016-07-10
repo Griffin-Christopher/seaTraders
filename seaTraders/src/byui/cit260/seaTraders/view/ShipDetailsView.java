@@ -7,12 +7,18 @@ package byui.cit260.seaTraders.view;
 
 import byui.cit260.seaTraders.control.InventoryControl;
 import byui.cit260.seaTraders.model.Item;
+import static byui.cit260.seaTraders.model.Ship.getName;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Christopher
  */
 public class ShipDetailsView extends View {
+  
   // Default Constructor
   public ShipDetailsView() {
     super("\n----------------------------------------"
@@ -26,8 +32,8 @@ public class ShipDetailsView extends View {
         + "\n----------------------------------------"
         + "\n| ITEM CATALOG                         |"
         + "\n----------------------------------------"
-        + "\nPress 'S' to sort and display a list of all ship fittings found in"
-        + "\nthe Item Catalog.");
+        + "\nPress 'S' to sort and display all ship fittings in the Item Catalog."
+        + "\nPress 'P' to save a list of them to a file named \"fittings.txt\".");
   }
 
   @Override
@@ -68,27 +74,37 @@ public class ShipDetailsView extends View {
       case "S":
         this.displayShipFittings();
         break;
+      case "P":
+        try {
+        // Save fittings list to specified file
+          this.writeShipFittings(this.getFilePath());
+        } catch (IOException ex) {
+          ErrorView.display(this.getClass().getName(),
+                  "Unable to save output.");
+        }
+        break;
       default:
-        System.out.println("\n*** Invalid selection *** Try again.");
+        ErrorView.display(this.getClass().getName(),
+                "Invalid selection; please try again.");
     }
     
     return false;
   }
 
   private void displayCargoManifest() {
-    System.out.println("\n*** displayCargoManifest() function called ***");
+    this.console.println("\n*** displayCargoManifest() function called ***");
   }
 
   private void displayJournal() {
-    System.out.println("\n*** displayJournal() function called ***");
+    this.console.println("\n*** displayJournal() function called ***");
   }
 
   private void displayQuestLog() {
-    System.out.println("\n*** displayQuestLog() function called ***");
+    this.console.println("\n*** displayQuestLog() function called ***");
   }
 
   private void displayResources() {
-    System.out.println("\n*** displayResources() function called ***");
+    this.console.println("\n*** displayResources() function called ***");
   }
   
   private void displayShipFittings() {
@@ -98,14 +114,84 @@ public class ShipDetailsView extends View {
 
     // Display Inventory
     StringBuilder line;
-    System.out.println("");
+    this.console.println("");
     for (Item item : inventory) {
       // 40 character line
       line = new StringBuilder("                                        ");
       line.insert(0, item.getName());
       line.insert(20, item.getType());
       line.insert(30, item.getValue());
-      System.out.println(line.toString());
+      this.console.println(line.toString());
+    }
+  }
+
+  private String getFilePath() {
+    String filePath = null;
+    boolean valid = false;
+    
+    try {
+      // Get user's file path
+      while (!valid) { // Require valid entry
+        this.console.println("\nEnter a file path for saving the fittings list.");
+
+        filePath = this.keyboard.readLine(); // Get next typed line
+        filePath = filePath.trim();        // Remove leading/trailing blanks
+
+        if (filePath.length() < 1) {    // Empty value
+          ErrorView.display(this.getClass().getName(),
+                  "Input can not be blank.");
+          continue;
+        }
+
+        break; // End loop after valid entry
+      }
+    } catch (IOException e) {
+          ErrorView.display(this.getClass().getName(),
+                  "Unable to save output.");
+    }
+
+    return filePath;
+  }
+  
+  private void writeShipFittings(String filePath) throws IOException {
+    // Initialize file details
+    FileWriter outFile = null;
+    
+    try {
+      // Create a new file
+      outFile = new FileWriter(filePath);
+      
+      // Fetch inventory
+      InventoryControl writeTest = new InventoryControl();
+      Item[] inventory = writeTest.sortInventory();
+
+      // Write inventory to file
+      outFile.write("FITTING             TYPE      VALUE \n" 
+              + "====================================\n");
+      StringBuilder line;
+      for (Item item : inventory) {
+        // 40 character line
+        line = new StringBuilder("                                        ");
+        line.insert(0, item.getName());
+        line.insert(20, item.getType());
+        line.insert(30, item.getValue());
+        outFile.write(line.toString() + "\n");
+      }
+      
+      // Confirm write success
+      this.console.println("\n*** List save was successful! ***");
+      
+      outFile.flush();
+    } catch (IOException e) {
+        ErrorView.display(this.getClass().getName(),
+                  "Unable to save output.");
+    } finally {
+      if (outFile != null) {
+        outFile.close();
+      }
     }
   }
 }
+
+
+

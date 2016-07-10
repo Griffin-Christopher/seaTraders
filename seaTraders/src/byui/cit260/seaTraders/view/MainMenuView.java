@@ -12,14 +12,17 @@ import byui.cit260.seaTraders.exceptions.WorldControlException;
 import byui.cit260.seaTraders.model.Game;
 import byui.cit260.seaTraders.model.NPCCatalog;
 import byui.cit260.seaTraders.model.ShipCatalog;
+import java.io.IOException;
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
+import seatraders.SeaTraders;
 
 /**
  *
  * @author Christopher Griffin
  */
 public class MainMenuView extends View {
+  
   // Default Constructor
   public MainMenuView() {
     super("\n----------------------------------------"
@@ -76,7 +79,8 @@ public class MainMenuView extends View {
         this.movementTest();
         break;
       default:
-        System.out.println("\n*** Invalid selection *** Try again.");
+        ErrorView.display(this.getClass().getName(),
+                "Invalid selection; please try again.");
     }
     
     return false;
@@ -91,7 +95,7 @@ public class MainMenuView extends View {
       GameMenuView gameMenu = new GameMenuView();
       gameMenu.display();
     } catch (WorldControlException me) {
-      System.out.println(me.getMessage());
+        this.console.println(me.getMessage());
     }
   }
   
@@ -104,7 +108,7 @@ public class MainMenuView extends View {
       GameMenuView gameMenu = new GameMenuView();
       gameMenu.display();
     } catch (WorldControlException me) {
-      System.out.println(me.getMessage());
+        this.console.println(me.getMessage());
     }
     
     // Test parseInt()
@@ -112,7 +116,8 @@ public class MainMenuView extends View {
     try {
       parseInt(parseInt);
     } catch (NumberFormatException nf) {
-        System.out.println("*** ERROR: Unable to parse INTEGER from string. ***");
+        ErrorView.display(this.getClass().getName(),
+                "Unable to parse INTEGER from string.");
     }
     
     
@@ -121,16 +126,79 @@ public class MainMenuView extends View {
     try {
       parseDouble(parseDouble);
     } catch (NumberFormatException nf) {
-        System.out.println("*** ERROR: Unable to parse DOUBLE from string. ***");
+        ErrorView.display(this.getClass().getName(),
+                "Unable to parse DOUBLE from string.");
     }
   }
 
   private void loadGame() {
-    System.out.println("\n*** loadGame() function called ***");
+    String filePath = null;
+    boolean valid = false;
+    
+    try {
+      // Get user's save file
+      while (!valid) { // Require valid entry
+        this.console.println("\nEnter the file path for a saved game.");
+
+        filePath = this.keyboard.readLine(); // Get next typed line
+        filePath = filePath.trim();        // Remove leading/trailing blanks
+
+        if (filePath.length() < 1) {    // Empty value
+          ErrorView.display(this.getClass().getName(),
+                  "Input can not be blank.");
+          continue;
+        }
+
+        break; // End loop after valid entry
+      }
+    } catch (IOException e) {
+          ErrorView.display(this.getClass().getName(),
+                  "Unable to read input.");
+    }
+
+    try {
+      // Load game details from specified file
+      GameControl.loadGame(filePath);
+      
+      // Display Game Menu
+      GameMenuView gameMenu = new GameMenuView();
+      gameMenu.display();
+    } catch (Exception e) {
+        ErrorView.display("MainMenuView", e.getMessage());
+    }
   }
 
   private void saveGame() {
-    System.out.println("\n*** saveGame() function called ***");
+    String filePath = null;
+    boolean valid = false;
+    
+    try {
+      // Get user's file path
+      while (!valid) { // Require valid entry
+        this.console.println("\nEnter a file path for saving the game.");
+
+        filePath = this.keyboard.readLine(); // Get next typed line
+        filePath = filePath.trim();        // Remove leading/trailing blanks
+
+        if (filePath.length() < 1) {    // Empty value
+          ErrorView.display(this.getClass().getName(),
+                  "Input can not be blank.");
+          continue;
+        }
+
+        break; // End loop after valid entry
+      }
+    } catch (IOException e) {
+          ErrorView.display(this.getClass().getName(),
+                  "Unable to save output.");
+    }
+
+    try {
+      // Save game details to specified file
+      GameControl.saveGame(SeaTraders.getCurrentGame(), filePath);
+    } catch (Exception e) {
+        ErrorView.display("MainMenuView", e.getMessage());
+    }
   }
 
   private void displayGameSettings() {
@@ -147,7 +215,7 @@ public class MainMenuView extends View {
   }
 
   private void quitGame() {
-    System.out.println("\n*** quitGame() function called ***");
+    this.console.println("\n*** quitGame() function called ***");
   }
 
   private void combatTest() {
@@ -157,7 +225,7 @@ public class MainMenuView extends View {
               new CombatControl(NPCCatalog.PIRATE_BASIC.spawnNPC());
       combatTestOne.advanceCombat();
     } catch (CombatControlException me) {
-      System.out.println(me.getMessage());
+        this.console.println(me.getMessage());
     }
     
     // Simulate 1v2
@@ -167,7 +235,7 @@ public class MainMenuView extends View {
                                 NPCCatalog.PIRATE_INTERMEDIATE.spawnNPC());
       combatTestTwo.advanceCombat();
     } catch (CombatControlException me) {
-      System.out.println(me.getMessage());
+        this.console.println(me.getMessage());
     }
   }
 
@@ -180,9 +248,9 @@ public class MainMenuView extends View {
 
       // Simulate Attack
       double damage = damageTest.calcDamage(damageTest.getNPCOne());
-      System.out.println("\nPlayer deals " + damage + " damage to the Pirate Ship!");
+      this.console.println("\nPlayer deals " + damage + " damage to the Pirate Ship!");
     } catch (CombatControlException me) {
-      System.out.println(me.getMessage());
+        this.console.println(me.getMessage());
     }
   }
   

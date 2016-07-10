@@ -7,7 +7,7 @@ package byui.cit260.seaTraders.exceptions;
 
 /**
  *
- * @author Christopher
+ * @author Christopher Griffin
  */
 public class CombatControlException extends Exception {
 

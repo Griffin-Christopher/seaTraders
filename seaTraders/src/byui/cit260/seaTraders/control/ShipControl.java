@@ -11,7 +11,7 @@ import byui.cit260.seaTraders.model.Ship;
 
 /**
  *
- * @author Christopher
+ * @author Christopher Griffin
  */
 class ShipControl {
   
@@ -30,5 +30,4 @@ class ShipControl {
   public static Item[] createPlayerCargo() {
     return new Item[Ship.getCargohold()];
   }
-  
 }

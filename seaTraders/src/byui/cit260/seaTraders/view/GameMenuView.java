@@ -77,7 +77,8 @@ public class GameMenuView extends View {
         this.displayShipDetails();
         break;
       case "M":
-        return true;
+        this.displayMainMenu();
+        break;
       case "T":
         this.movePlayer();
         break;
@@ -97,7 +98,7 @@ public class GameMenuView extends View {
         this.displayHelp();
         break;
       default:
-        System.out.println("\n*** Invalid selection *** Try again.");
+        this.console.println("\n*** Invalid selection *** Try again.");
     }
     
     return false;
@@ -105,10 +106,10 @@ public class GameMenuView extends View {
 
   private void displayWorldMap() {
     // TEMPORARY PLACEHOLDER MAP UNTIL LOCATIONS ARE FINALIZED
-    System.out.println("         === SEA TRADERS WORLD MAP ===      ");
-    System.out.println("   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |");
+    this.console.println("         === SEA TRADERS WORLD MAP ===      ");
+    this.console.println("   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |");
     for (int r = 0; r < World.getRowCount(); r++) {
-      System.out.println("---|---|---|---|---|---|---|---|---|---|---|");
+      this.console.println("---|---|---|---|---|---|---|---|---|---|---|");
       StringBuilder line = new StringBuilder(44);
       line.append(" ").append(r).append(" |");
       for (int c = 0; c < World.getColumnCount(); c++) {
@@ -119,25 +120,25 @@ public class GameMenuView extends View {
           line.append(" ? |");
         }
       }
-      System.out.println(line.toString());
+      this.console.println(line.toString());
     }
-    System.out.println("---|---|---|---|---|---|---|---|---|---|---|");
+    this.console.println("---|---|---|---|---|---|---|---|---|---|---|");
   }
   
   private void displayCargoManifest() {
-    System.out.println("\n*** displayCargoManifest() function called ***");
+    this.console.println("\n*** displayCargoManifest() function called ***");
   }
 
   private void displayJournal() {
-    System.out.println("\n*** displayJournal() function called ***");
+    this.console.println("\n*** displayJournal() function called ***");
   }
 
   private void displayQuestLog() {
-    System.out.println("\n*** displayQuestLog() function called ***");
+    this.console.println("\n*** displayQuestLog() function called ***");
   }
 
   private void displayResources() {
-    System.out.println("\n*** displayResources() function called ***");
+    this.console.println("\n*** displayResources() function called ***");
   }
 
   private void displayShipDetails() {
@@ -146,27 +147,33 @@ public class GameMenuView extends View {
     shipDetails.display();
   }
 
+  private void displayMainMenu() {
+    // Display Main Menu
+      MainMenuView mainMenu = new MainMenuView();
+      mainMenu.display();
+  }
+  
   private void movePlayer() {
-    System.out.println("\n*** movePlayer() function called ***");
+    this.console.println("\n*** movePlayer() function called ***");
   }
 
   private void repairShip() {
-    System.out.println("\n*** repairShip() function called ***");
+    this.console.println("\n*** repairShip() function called ***");
   }
 
   private void fitShip() {
-    System.out.println("\n*** fitShip() function called ***");
+    this.console.println("\n*** fitShip() function called ***");
   }
 
   private void upgradeShip() {
-    System.out.println("\n*** upgradeShip() function called ***");
+    this.console.println("\n*** upgradeShip() function called ***");
   }
   
   private void shoreLeave() {
-    System.out.println("\n*** shoreLeave() function called ***");
+    this.console.println("\n*** shoreLeave() function called ***");
   }
   
   private void displayHelp() {
-    System.out.println("\n*** displayHelp() function called ***");
+    this.console.println("\n*** displayHelp() function called ***");
   } 
 }

@@ -30,16 +30,16 @@ public class Quest implements Serializable {
   
   // Constructors
   public Quest(String type, String description) {
-    setType(type);
-    setDescription(description);
+    this.type = type;
+    this.description = description;
     
     // OTHER QUEST INITIALIZATION DETAILS
   }
   public Quest(String type, String description, Point origin, Point destination) {
-    setType(type);
-    setDescription(description);
-    setOrigin(origin);
-    setDestination(destination);
+    this.type = type;
+    this.description = description;
+    this.origin = origin;
+    this.destination = destination;
     
     // OTHER QUEST INITIALIZATION DETAILS
   }
@@ -77,8 +77,7 @@ public class Quest implements Serializable {
   public boolean isUnlocked() {
     return isUnlocked;
   }
-
-  
+ 
   // Setters
   public void setType(String type) {
     this.type = type;

@@ -9,9 +9,9 @@ import java.io.Serializable;
 
 /**
  *
- * @author Christopher
+ * @author Christopher Griffin
  */
-public enum MercenaryCatalog implements Serializable {
+public enum MercenaryCatalog implements Serializable {  
   
   /********
   * ATTACK
@@ -21,8 +21,7 @@ public enum MercenaryCatalog implements Serializable {
   ATK_TWO("NAME", "ATK", "DESCRIPTION",
           0.00, 0.00, 0.00, 2.00, 200.0, 2000),
   ATK_THREE("NAME", "ATK", "DESCRIPTION",
-          0.00, 0.00, 0.00, 3.00, 300.0, 5000),
-  
+          0.00, 0.00, 0.00, 3.00, 300.0, 5000),  
   /*********
   * DEFENSE
   **********************************************************/
@@ -31,8 +30,7 @@ public enum MercenaryCatalog implements Serializable {
   DEF_TWO("NAME", "DEF", "DESCRIPTION",
           0.00, 0.00, 0.00, 2.00, 200.0, 2000),
   DEF_THREE("NAME", "DEFE", "DESCRIPTION",
-          0.00, 0.00, 0.00, 3.00, 300.0, 5000),
-  
+          0.00, 0.00, 0.00, 3.00, 300.0, 5000),  
   /************
   * NAVIGATION
   **********************************************************/
@@ -41,8 +39,7 @@ public enum MercenaryCatalog implements Serializable {
   NAV_TWO("NAME", "NAV", "DESCRIPTION",
           0.00, 0.00, 0.00, 2.00, 200.0, 2000),
   NAV_THREE("NAME", "NAV", "DESCRIPTION",
-          0.00, 0.00, 0.00, 3.00, 300.0, 5000),
-  
+          0.00, 0.00, 0.00, 3.00, 300.0, 5000),  
   /***********
   * LOGISTICS
   **********************************************************/
@@ -51,8 +48,7 @@ public enum MercenaryCatalog implements Serializable {
   LOG_TWO("NAME", "LOG", "DESCRIPTION",
           0.00, 0.00, 0.00, 2.00, 200.0, 2000),
   LOG_THREE("NAME", "LOG", "DESCRIPTION",
-          0.00, 0.00, 0.00, 3.00, 300.0, 5000),
-  
+          0.00, 0.00, 0.00, 3.00, 300.0, 5000),  
   /*******
   * TRADE
   **********************************************************/
@@ -61,8 +57,7 @@ public enum MercenaryCatalog implements Serializable {
   TRADE_TWO("NAME", "TRADE", "DESCRIPTION",
           0.00, 0.00, 0.00, 2.00, 200.0, 2000),
   TRADE_THREE("NAME", "TRADE", "DESCRIPTION",
-          0.00, 0.00, 0.00, 3.00, 300.0, 5000),
-  
+          0.00, 0.00, 0.00, 3.00, 300.0, 5000),  
   /**********
   * SHIPPING
   **********************************************************/
@@ -71,8 +66,7 @@ public enum MercenaryCatalog implements Serializable {
   HAUL_TWO("NAME", "HAUL", "DESCRIPTION",
           0.00, 0.00, 0.00, 2.00, 200.0, 2000),
   HAUL_THREE("NAME", "HAUL", "DESCRIPTION",
-          0.00, 0.00, 0.00, 3.00, 300.0, 5000),
-  
+          0.00, 0.00, 0.00, 3.00, 300.0, 5000),  
   /********
   * COMBAT
   **********************************************************/

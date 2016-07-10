@@ -34,8 +34,7 @@ public class Ship implements Serializable {
   
   // Constructor
   public Ship() {
-  }
-  
+  }  
   public Ship(String name, String type, String description, double agility,
           double armor, double attack, int cannons, double speed, double health, 
           int cargohold, double value) {

@@ -6,6 +6,7 @@
 package byui.cit260.seaTraders.model;
 
 import byui.cit260.seaTraders.model.location.Location;
+import byui.cit260.seaTraders.view.ErrorView;
 import java.io.Serializable;
 
 /**
@@ -28,7 +29,8 @@ public class World implements Serializable {
   public World(int rows, int columns) {
     // Validate world boundaries
     if (rows < 1 || columns < 1) {
-      System.out.println("The number of rows and columns must be > zero");
+      ErrorView.display(this.getClass().getName(),
+              "The number of rows and columns must be greater than zero.");
       return;
     }
     

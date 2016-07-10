@@ -14,8 +14,8 @@ import byui.cit260.seaTraders.model.location.Stage;
  *
  * @author Christopher Griffin
  */
-class WorldControl {
-
+public class WorldControl {
+  
   public static World createWorld() throws WorldControlException {
     // Initialize game world
     World world = new World (10, 10);
@@ -66,7 +66,6 @@ class WorldControl {
    
     return stages;
   }
-  
   
   private static void populateLocations(Stage[] stages) {
     Location[][] worldMap = World.getWorldMap();
