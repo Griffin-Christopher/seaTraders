@@ -5,6 +5,7 @@
  */
 package byui.cit260.seaTraders.model.location;
 
+import byui.cit260.seaTraders.model.Ship;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -18,11 +19,26 @@ public class Stage implements Serializable {
   private String name;
   private String description;
   private String type;
-  private double[] inventory;
-  private ArrayList<Encounter> encounters;
+  private int resourcePrice;
+  private int[] resourcePrices;
+  private ArrayList<Object> inventory;
+  private ArrayList<Ship> ships;
+  private Encounter encounter;
   
-  // Constructor
+  // Constructors
   public Stage() {
+  }
+  public Stage(String name, String description, String type, int price, 
+          int[] prices, ArrayList<Object> inventory, ArrayList<Ship> ships,
+          Encounter encounter) {
+    this.name = name;
+    this.description = description;
+    this.type = type;
+    this.resourcePrice = price;
+    this.resourcePrices = prices;
+    this.inventory = inventory;
+    this.ships = ships;
+    this.encounter = encounter;
   }
 
   // Getters
@@ -35,8 +51,26 @@ public class Stage implements Serializable {
   public String getType() {
     return type;
   }
-  public double[] getInventory() {
+  public int getPrice() {
+    return resourcePrice;
+  }
+  public int[] getPrices() {
+    return resourcePrices;
+  }
+  public ArrayList<Object> getInventory() {
     return inventory;
+  }
+  public Object getItem(int index) {
+    return inventory.get(index);
+  }
+  public ArrayList<Ship> getShips() {
+    return ships;
+  }
+  public Ship getShip(int index) {
+    return ships.get(index);
+  }
+  public Encounter getEncounter() {
+    return encounter;
   }
 
   // Setters
@@ -49,11 +83,25 @@ public class Stage implements Serializable {
   public void setType(String type) {
     this.type = type;
   }
-  public void setInventory(double[] inventory) {
+  public void setPrice(int price) {
+    this.resourcePrice = price;
+  }
+  public void setPrices(int[] prices) {
+    this.resourcePrices = prices;
+  }
+  public void setInventory(ArrayList<Object> inventory) {
     this.inventory = inventory;
   }
-
-  void setStage() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public void setItem(int index, Object item) {
+    this.inventory.set(index, item);
+  }
+  public void setShips(ArrayList<Ship> ships) {
+    this.ships = ships;
+  }
+  public void setShip(int index, Ship ship) {
+    this.ships.set(index, ship);
+  }
+  public void setEncounter(Encounter encounter) {
+    this.encounter = encounter;
   }
 }

@@ -24,7 +24,9 @@ public class Mercenary implements Serializable {
   private double health;
   private double value;
   
-  // Constructor
+  // Constructors
+  public Mercenary() {
+  }
   public Mercenary(String name, String type, String description, double agility,
           double armor, double attack, double speed, double health, double value) {
     this.name = name;

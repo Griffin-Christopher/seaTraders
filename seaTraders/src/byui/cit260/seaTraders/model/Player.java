@@ -5,6 +5,7 @@
  */
 package byui.cit260.seaTraders.model;
 
+import byui.cit260.seaTraders.model.location.Location;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -19,13 +20,14 @@ public class Player implements Serializable {
   
   // Variables
   private static String name;
-  private static int[] location;
+  private static Location currentLocation;
   private static double agility;
   private static double armor;
   private static double attack;
   private static double speed;
   private static double health;
   private static int[] resources; // Gold | Food | Ammo | Lumber | Cotton | Iron
+  private static int experience;
   private static int fame;
   private static int rank;
   private static ArrayList<String> journal;
@@ -51,8 +53,8 @@ public class Player implements Serializable {
   public static String getName() {
     return name;
   }
-  public static int[] getLocation() {
-    return location;
+  public static Location getCurrentLocation() {
+    return currentLocation;
   }
   public static double getAgility() {
     return agility;
@@ -72,7 +74,9 @@ public class Player implements Serializable {
   public static int[] getResources() {
     return resources;
   }
- 
+  public static int getExperience() {
+    return experience;
+  }
   public static int getFame() {
     return fame;
   }
@@ -93,8 +97,8 @@ public class Player implements Serializable {
   public static void setName(String name) {
     Player.name = name;
   }
-  public static void setLocation(int[] location) {
-    Player.location = location;
+  public static void setCurrentLocation(Location location) {
+    Player.currentLocation = location;
   }
   public static void setAgility(double agility) {
     Player.agility = agility;
@@ -116,6 +120,9 @@ public class Player implements Serializable {
   }
   public static void setResource(int index, int resource) {
     Player.resources[index] = resource;
+  }
+  public static void setExperience(int experience) {
+    Player.experience = experience;
   }
   public static void setFame(int fame) {
     Player.fame = fame;

@@ -13,7 +13,7 @@ import byui.cit260.seaTraders.model.Ship;
  *
  * @author Christopher Griffin
  */
-class ShipControl {
+public class ShipControl {
   
   public enum Fitting {
     SAILS, HULL, CANNONS;

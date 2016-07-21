@@ -21,8 +21,15 @@ public class Encounter implements Serializable {
   private String description;
   private String type;
   
-  // Constructor
-  public Encounter() {
+  // Constructors
+  public Encounter(/*RANDOM*/) {
+    // GENERATE RANDOM NPC ENCOUNTER 
+    //randomEncounter();
+  }
+  public Encounter(NPC[] npcs, String description, String type) {
+    this.npcs = npcs;
+    this.description = description;
+    this.type = type; 
   }
 
   // Getters
@@ -53,7 +60,7 @@ public class Encounter implements Serializable {
     this.type = type;
   }
 
-  void setEncounter() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
+  // private void randomEncounter() {
+  // Pull random Encounter from NPC-based set in EncounterCatalog
+  // spawnEncounter() and pull details into self
 }

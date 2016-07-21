@@ -15,16 +15,18 @@ import java.io.Serializable;
 public class NPC implements Serializable { 
   
   // Variables
+  private boolean isEmpty = true;
   private double agility;
   private double armor;
   private double attack;
   private double speed;
   private double health;
   
-  // Constructor
+  // Constructors
   public NPC() {  
   }  
   public NPC(double agility, double armor, double attack, double speed, double health) {
+    this.isEmpty = false;
     this.agility = agility;
     this.armor = armor;
     this.attack = attack;

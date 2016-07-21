@@ -29,7 +29,7 @@ public class InventoryControl {
     inventory[9] = ItemCatalog.HULL_HEAVY.spawnItem();
     inventory[10] = ItemCatalog.CANNONS_LARGE.spawnItem();
     inventory[11] = ItemCatalog.TMAP_THREE.spawnItem();
-    inventory[12] = ItemCatalog.HULL_FORTIFIED.spawnItem();
+    inventory[12] = ItemCatalog.HULL_NAVY.spawnItem();
     inventory[13] = ItemCatalog.TMAP_FOUR.spawnItem();
 
     // Group Cannons

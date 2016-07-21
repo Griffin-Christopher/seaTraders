@@ -26,36 +26,33 @@ public enum ShipCatalog implements Serializable {
   COMBAT_ONE("NAME", "COMBAT", "DESCRIPTION",
           0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),
   COMBAT_TWO("NAME", "COMBAT", "DESCRIPTION",
-          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),
+          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 2000),
   COMBAT_THREE("NAME", "COMBAT", "DESCRIPTION",
-          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),  
+          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 3000),
+  COMBAT_NAVY("NAME", "NAVY", "DESCRIPTION",
+          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 4000),  
   /*******
   * TRADE
   **********************************************************/
   TRADE_ONE("NAME", "TRADE", "DESCRIPTION",
           0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),
   TRADE_TWO("NAME", "TRADE", "DESCRIPTION",
-          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),
+          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 2000),
   TRADE_THREE("NAME", "TRADE", "DESCRIPTION",
-          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),  
+          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 3000),
+  TRADE_NAVY("NAME", "NAVY", "DESCRIPTION",
+          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 4000),  
   /*********
   * HAULING
   **********************************************************/
   HAULER_ONE("NAME", "HAULER", "DESCRIPTION",
           0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),
   HAULER_TWO("NAME", "HAULER", "DESCRIPTION",
-          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),
+          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 2000),
   HAULER_THREE("NAME", "HAULER", "DESCRIPTION",
-          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),  
-  /******
-  * NAVY
-  **********************************************************/
-  NAVY_ONE("NAME", "NAVY", "DESCRIPTION",
-          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),
-  NAVY_TWO("NAME", "NAVY", "DESCRIPTION",
-          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000),
-  NAVY_THREE("NAME", "NAVY", "DESCRIPTION",
-          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 1000);
+          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 3000), 
+  HAULER_NAVY("NAME", "NAVY", "DESCRIPTION",
+          0.00, 0.00, 0.00, 0, 1.00, 100.0, 0, 4000);
   
   // Variables
   private final String name;

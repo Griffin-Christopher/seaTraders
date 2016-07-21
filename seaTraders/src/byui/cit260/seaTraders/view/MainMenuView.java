@@ -29,15 +29,14 @@ public class MainMenuView extends View {
         + "\n| Main Menu                            |"
         + "\n----------------------------------------"
         + "\nN - New Game"
-        + "\nF - Faulty Game (Test Exceptions)"
+        //+ "\nF - Faulty Game (Test Exceptions)"
         + "\nL - Load Game"
         + "\nS - Save Game"
         + "\nT - Game Settings"
         + "\nH - How To Play"
         + "\nQ - Quit Game"
         + "\nC - Combat Test"
-        + "\nD - Damage Test"
-        + "\nM - Movement Test"    
+        + "\nD - Damage Test"  
         + "\n----------------------------------------");
   }
 
@@ -51,9 +50,9 @@ public class MainMenuView extends View {
       case "N":
         this.newGame();
         break;
-      case "F":
-        this.faultyGame();
-        break;
+      //case "F":
+        //this.faultyGame();
+        //break;
       case "L":
         this.loadGame();
         break;
@@ -74,9 +73,6 @@ public class MainMenuView extends View {
         break;
       case "D":
         this.damageTest();
-        break;
-      case "M":
-        this.movementTest();
         break;
       default:
         ErrorView.display(this.getClass().getName(),
@@ -252,11 +248,5 @@ public class MainMenuView extends View {
     } catch (CombatControlException me) {
         this.console.println(me.getMessage());
     }
-  }
-  
-  private void movementTest() {
-    // Display Help Menu
-    MovementView movementTest = new MovementView();
-    movementTest.display();
   }
 }

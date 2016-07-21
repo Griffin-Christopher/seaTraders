@@ -32,7 +32,6 @@ public class Quest implements Serializable {
   public Quest(String type, String description) {
     this.type = type;
     this.description = description;
-    
     // OTHER QUEST INITIALIZATION DETAILS
   }
   public Quest(String type, String description, Point origin, Point destination) {
@@ -40,7 +39,6 @@ public class Quest implements Serializable {
     this.description = description;
     this.origin = origin;
     this.destination = destination;
-    
     // OTHER QUEST INITIALIZATION DETAILS
   }
 

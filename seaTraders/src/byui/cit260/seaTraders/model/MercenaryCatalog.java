@@ -25,11 +25,20 @@ public enum MercenaryCatalog implements Serializable {
   /*********
   * DEFENSE
   **********************************************************/
-  DEF_ONE("NAME", "DEFE", "DESCRIPTION",
+  DEF_ONE("NAME", "DEF", "DESCRIPTION",
           0.00, 0.00, 0.00, 1.00, 100.0, 1000),
   DEF_TWO("NAME", "DEF", "DESCRIPTION",
           0.00, 0.00, 0.00, 2.00, 200.0, 2000),
-  DEF_THREE("NAME", "DEFE", "DESCRIPTION",
+  DEF_THREE("NAME", "DEF", "DESCRIPTION",
+          0.00, 0.00, 0.00, 3.00, 300.0, 5000),  
+  /*********
+  * TACTICS
+  **********************************************************/
+  TAC_ONE("NAME", "TAC", "DESCRIPTION",
+          0.00, 0.00, 0.00, 1.00, 100.0, 1000),
+  TAC_TWO("NAME", "TAC", "DESCRIPTION",
+          0.00, 0.00, 0.00, 2.00, 200.0, 2000),
+  TAC_THREE("NAME", "TAC", "DESCRIPTION",
           0.00, 0.00, 0.00, 3.00, 300.0, 5000),  
   /************
   * NAVIGATION
@@ -39,16 +48,7 @@ public enum MercenaryCatalog implements Serializable {
   NAV_TWO("NAME", "NAV", "DESCRIPTION",
           0.00, 0.00, 0.00, 2.00, 200.0, 2000),
   NAV_THREE("NAME", "NAV", "DESCRIPTION",
-          0.00, 0.00, 0.00, 3.00, 300.0, 5000),  
-  /***********
-  * LOGISTICS
-  **********************************************************/
-  LOG_ONE("NAME", "LOG", "DESCRIPTION",
-          0.00, 0.00, 0.00, 1.00, 100.0, 1000),
-  LOG_TWO("NAME", "LOG", "DESCRIPTION",
-          0.00, 0.00, 0.00, 2.00, 200.0, 2000),
-  LOG_THREE("NAME", "LOG", "DESCRIPTION",
-          0.00, 0.00, 0.00, 3.00, 300.0, 5000),  
+          0.00, 0.00, 0.00, 3.00, 300.0, 5000),
   /*******
   * TRADE
   **********************************************************/
@@ -57,34 +57,7 @@ public enum MercenaryCatalog implements Serializable {
   TRADE_TWO("NAME", "TRADE", "DESCRIPTION",
           0.00, 0.00, 0.00, 2.00, 200.0, 2000),
   TRADE_THREE("NAME", "TRADE", "DESCRIPTION",
-          0.00, 0.00, 0.00, 3.00, 300.0, 5000),  
-  /**********
-  * SHIPPING
-  **********************************************************/
-  HAUL_ONE("NAME", "HAUL", "DESCRIPTION",
-          0.00, 0.00, 0.00, 1.00, 100.0, 1000),
-  HAUL_TWO("NAME", "HAUL", "DESCRIPTION",
-          0.00, 0.00, 0.00, 2.00, 200.0, 2000),
-  HAUL_THREE("NAME", "HAUL", "DESCRIPTION",
-          0.00, 0.00, 0.00, 3.00, 300.0, 5000),  
-  /********
-  * COMBAT
-  **********************************************************/
-  COMBAT_ONE("NAME", "COMBAT", "DESCRIPTION",
-          0.00, 0.00, 0.00, 1.00, 100.0, 1000),
-  COMBAT_TWO("NAME", "COMBAT", "DESCRIPTION",
-          0.00, 0.00, 0.00, 2.00, 200.0, 2000),
-  COMBAT_THREE("NAME", "COMBAT", "DESCRIPTION",
-          0.00, 0.00, 0.00, 3.00, 300.0, 5000),
-  /*********
-  * UTILITY
-  **********************************************************/
-  UTIL_ONE("NAME", "UTIL", "DESCRIPTION",
-          0.00, 0.00, 0.00, 1.00, 100.0, 1000),
-  UTIL_TWO("NAME", "UTIL", "DESCRIPTION",
-          0.00, 0.00, 0.00, 2.00, 200.0, 2000),
-  UTIL_THREE("NAME", "UTIL", "DESCRIPTION",
-          0.00, 0.00, 0.00, 3.00, 300.0, 5000);
+          0.00, 0.00, 0.00, 3.00, 300.0, 5000); 
   
   // Variables
   private final String name;
@@ -139,4 +112,11 @@ public enum MercenaryCatalog implements Serializable {
   public int getValue() {
     return value;
   } 
+  
+  public Mercenary spawnMercenary() {
+    Mercenary mercenary = new Mercenary(getName(), getType(), getDescription(), 
+            getAgility(), getArmor(), getAttack(), getSpeed(), getHealth(), 
+            getValue());
+    return mercenary;
+  }
 }

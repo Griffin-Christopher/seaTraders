@@ -1,0 +1,16 @@
+FITTING             TYPE      VALUE 
+====================================
+Large Cannons       CANNONS   5000.0                              
+Medium Cannons      CANNONS   2000.0                               
+Small Cannons       CANNONS   1000.0                              
+Small Sails         SAILS     1000.0                          
+Large Sails         SAILS     5000.0                          
+Medium Sails        SAILS     2000.0                           
+Light Hull          HULL      1000.0                        
+Navy Hull           HULL      7000.0                       
+Medium Hull         HULL      2000.0                         
+Heavy Hull          HULL      4000.0                        
+First Map Piece     TMAP      0.0                             
+Third Map Piece     TMAP      0.0                             
+Second Map Piece    TMAP      0.0                              
+Fourth Map Piece    TMAP      0.0                              

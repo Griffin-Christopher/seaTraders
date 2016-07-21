@@ -22,6 +22,8 @@ public enum ItemCatalog implements Serializable {
           0.00, 0.00, 0.00, 2.00, 200.0, 2000),
   SAILS_LARGE("Large Sails", "SAILS", "DESCRIPTION",
           0.00, 0.00, 0.00, 3.00, 300.0, 5000),
+  SAILS_NAVY("Navy Sails", "SAILS", "DESCRIPTION",
+          0.00, 0.00, 0.00, 3.00, 300.0, 5000),
   /*******
   * HULLS
   **********************************************************/
@@ -31,7 +33,7 @@ public enum ItemCatalog implements Serializable {
           -0.25, 10.00, 0.00,  0.50, 250.0, 2000),
   HULL_HEAVY("Heavy Hull", "HULL", "DESCRIPTION",
           -0.50, 15.00, 0.00,  0.00, 500.0, 4000),
-  HULL_FORTIFIED("Fortified Hull", "HULL", "DESCRIPTION",
+  HULL_NAVY("Navy Hull", "HULL", "DESCRIPTION",
           -0.75, 20.00, 0.00, -0.50, 750.0, 7000),
   /*********
   * CANNONS
@@ -41,6 +43,8 @@ public enum ItemCatalog implements Serializable {
   CANNONS_MEDIUM("Medium Cannons", "CANNONS", "DESCRIPTION",
           0.25, 0.00, 10.0, 0.00, 0.00, 2000),
   CANNONS_LARGE("Large Cannons", "CANNONS", "DESCRIPTION",
+          0.00, 0.00, 10.0, 0.00, 0.00, 5000),
+  CANNONS_NAVY("Navy Cannons", "CANNONS", "DESCRIPTION",
           0.00, 0.00, 10.0, 0.00, 0.00, 5000),
   /*******
   * TMAPS

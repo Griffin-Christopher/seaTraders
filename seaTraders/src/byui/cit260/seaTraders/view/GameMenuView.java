@@ -5,6 +5,7 @@
  */
 package byui.cit260.seaTraders.view;
 
+import byui.cit260.seaTraders.model.Player;
 import byui.cit260.seaTraders.model.World;
 
 /**
@@ -25,7 +26,8 @@ public class GameMenuView extends View {
         + "\nD – Ship Details"
         + "\nM - Return to Main Menu"
         + "\n----------------------------------------"
-        + "\n| SHIPYARD                             |"
+        + "\n|  " 
+        + Player.getCurrentLocation().getStage().getName()
         + "\n----------------------------------------"
         + "\nT – Travel"
         + "\nP – Repair Ship"
@@ -103,26 +105,25 @@ public class GameMenuView extends View {
     
     return false;
   }
-
+  
   private void displayWorldMap() {
-    // TEMPORARY PLACEHOLDER MAP UNTIL LOCATIONS ARE FINALIZED
-    this.console.println("         === SEA TRADERS WORLD MAP ===      ");
-    this.console.println("   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |");
+    this.console.println("              === SEA TRADERS WORLD MAP ===           ");
+    this.console.println("   | 00 | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 |");
     for (int r = 0; r < World.getRowCount(); r++) {
-      this.console.println("---|---|---|---|---|---|---|---|---|---|---|");
+      this.console.println("---|----|----|----|----|----|----|----|----|----|----|");
       StringBuilder line = new StringBuilder(44);
       line.append(" ").append(r).append(" |");
       for (int c = 0; c < World.getColumnCount(); c++) {
-        if (World.getLocation(r, c).isVisited()) {
-          line.append(" * |");
+        if (World.getLocation(r, c).isUnlocked()) {
+          line.append(" ").append(World.getLocation(r, c).getSymbol()).append(" |");
         }
         else {
-          line.append(" ? |");
+          line.append(" ?? |");
         }
       }
       this.console.println(line.toString());
     }
-    this.console.println("---|---|---|---|---|---|---|---|---|---|---|");
+    this.console.println("---|----|----|----|----|----|----|----|----|----|----|");
   }
   
   private void displayCargoManifest() {
@@ -154,7 +155,9 @@ public class GameMenuView extends View {
   }
   
   private void movePlayer() {
-    this.console.println("\n*** movePlayer() function called ***");
+    displayWorldMap();
+    MovementView travel = new MovementView();
+    travel.display();
   }
 
   private void repairShip() {

@@ -19,16 +19,30 @@ public class Location implements Serializable {
   // Variables
   private int row;
   private int column;
+  private String symbol;
+  private String type;
+  
   private boolean visited;
   private boolean unlocked;
-  
-  
-  // Constructor
-  public Location() {
-    this.visited = false;
-    this.unlocked = false;
+   
+  // Constructors
+  public Location(int row, int column) {
+    this.row = row;
+    this.column = column;
+    this.symbol = "  ";
+    this.unlocked = true;
   }
-
+  public Location(Stage stage, int row, int column, String symbol, String type, 
+          boolean visited, boolean unlocked) {
+    this.stage = stage;
+    this.row = row;
+    this.column = column;
+    this.symbol = symbol;
+    this.type = type;
+    this.visited = visited;
+    this.unlocked = unlocked;
+  }
+  
   // Getters
   public Stage getStage() {
     return stage;
@@ -38,6 +52,12 @@ public class Location implements Serializable {
   }
   public int getColumn() {
     return column;
+  }
+  public String getSymbol() {
+    return symbol;
+  }
+  public String getType() {
+    return type;
   }
   public boolean isVisited() {
     return visited;
@@ -55,6 +75,12 @@ public class Location implements Serializable {
   }
   public void setColumn(int column) {
     this.column = column;
+  }
+  public void setSymbol(String symbol) {
+    this.symbol = symbol;
+  }
+  public void setType(String type) {
+    this.type = type;
   }
   public void setVisited() {
     this.visited = true;

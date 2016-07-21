@@ -32,7 +32,7 @@ public class Ship implements Serializable {
   
   
   
-  // Constructor
+  // Constructors
   public Ship() {
   }  
   public Ship(String name, String type, String description, double agility,

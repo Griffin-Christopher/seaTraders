@@ -7,11 +7,8 @@ package byui.cit260.seaTraders.view;
 
 import byui.cit260.seaTraders.control.InventoryControl;
 import byui.cit260.seaTraders.model.Item;
-import static byui.cit260.seaTraders.model.Ship.getName;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -192,6 +189,3 @@ public class ShipDetailsView extends View {
     }
   }
 }
-
-
-
